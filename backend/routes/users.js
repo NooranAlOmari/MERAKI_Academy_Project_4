@@ -5,6 +5,9 @@ const {
   register,
   login,
   getAllUser,
+  getUserById, 
+  updateUserById, 
+  deleteUserById,
 } = require("../controllers/users");
 
 // define router
@@ -49,6 +52,9 @@ usersRouter.post("/login", login);
 /* JUST FOR ADMIN*/
 //////////////////
 usersRouter.get("/",authentication,authorization('view_users'), getAllUser);
+usersRouter.get("/:id",authentication,authorization('view_users'), getUserById);
+usersRouter.put("/:id",authentication,authorization('view_users'), updateUserById);
+usersRouter.delete("/:id",authentication,authorization('view_users'), deleteUserById);
 
 
 

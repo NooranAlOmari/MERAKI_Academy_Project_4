@@ -115,11 +115,44 @@ const getAllUser = (req, res) => {
   });
 }
 
+const getUserById = async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const user = await usersModel.findById(userId).populate('role');
+    if (!user) return res.status(404).json({ success: false, message: 'User not found' });
+    res.status(200).json({ success: true, user });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
 
+const updateUserById = async (req, res) => {
+  const userId = req.params.id;
+  const updates = req.body;
+  try {
+    const updatedUser = await usersModel.findByIdAndUpdate(userId, updates, { new: true });
+    res.status(200).json({ success: true, message: 'User updated', user: updatedUser });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+const deleteUserById = async (req, res) => {
+  const userId = req.params.id;
+  try {
+    await usersModel.findByIdAndDelete(userId);
+    res.status(200).json({ success: true, message: 'User deleted' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
 
 
 module.exports = {
   register,
   login,
   getAllUser,
+  getUserById, 
+  updateUserById, 
+  deleteUserById,
 };
