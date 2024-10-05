@@ -7,7 +7,6 @@ const app = express();
 const PORT = process.env.PORT;
 
 // Import Routers
-const articlesRouter = require("./routes/articles");
 const usersRouter = require("./routes/users");
 const rolesRouter = require("./routes/roles");
 
@@ -15,7 +14,6 @@ app.use(cors());
 app.use(express.json());
 
 // Routes Middleware
-app.use("/articles", articlesRouter);
 app.use("/users", usersRouter);
 app.use("/roles", rolesRouter);
 

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 // connecting to mongodb
-mongoose.connect(process.env.Project_Four).then(
+mongoose.connect(process.env.DB_URI).then(
   () => {
     console.log("DB Ready To Use");
   },

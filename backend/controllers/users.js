@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 // This function creates a new author (new user)
 const register = (req, res) => {
-  const { firstName, lastName, age, country, email, password, role } = req.body;
+  const { firstName, lastName, age, country, email, password} = req.body;
   const user = new usersModel({
     firstName,
     lastName,
@@ -12,7 +12,7 @@ const register = (req, res) => {
     country,
     email,
     password,
-    role,
+    role:"6700899e810b83f37a76ea2d",
   });
 
   user
@@ -90,7 +90,36 @@ const login = (req, res) => {
     });
 };
 
+
+
+///////////////////
+/* JUST FOR ADMIN*/
+//////////////////
+const getAllUser = (req, res) => {
+  usersModel.find({})
+  .populate("role")
+  .then((result) => {
+    res.status(200).json({
+    success: true ,
+    message: "All the users",
+    Users : result
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json({
+    success: false,
+    message: "Server Error",
+    err: err.message
+    });
+  });
+}
+
+
+
+
 module.exports = {
   register,
   login,
+  getAllUser,
 };
