@@ -65,7 +65,43 @@ const getProductById = async (req, res) => {
 };
 
 
-module.exports = { createProduct ,getAllProducts,
+const updateProductById = async (req, res) => {
+    const productId = req.params.id;
+    const updates = req.body;
+    try {
+        const updatedProduct = await productModel.findByIdAndUpdate(productId, updates, { new: true });
+        res.status(200).json({
+                success: true,
+                message: 'Product updated',
+                product: updatedProduct });
+    } 
+    catch (err) {
+        res.status(500).json({ 
+                success: false,
+                message: err.message });
+    }
+};
+
+
+const deleteProductById = async (req, res) => {
+    const productId = req.params.id;
+    try {
+        await productModel.findByIdAndDelete(productId);
+        res.status(200).json({ 
+            success: true,
+            message: 'Product deleted' });
+    } 
+    catch (err) {
+        res.status(500).json({
+            success: false,
+            message: err.message });
+    }
+};
+
+module.exports = { 
+createProduct,
+getAllProducts,
 getProductById ,
-getProductById,
+updateProductById,
+deleteProductById,
 };
