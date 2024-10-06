@@ -10,6 +10,7 @@ const PORT = process.env.PORT;
 const usersRouter = require("./routes/users");
 const rolesRouter = require("./routes/roles");
 const productRouter = require("./routes/product");
+const cartRouter = require("./routes/cart");
 
 app.use(cors());
 app.use(express.json());
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use("/users", usersRouter);
 app.use("/roles", rolesRouter);
 app.use('/products', productRouter)
+app.use('/carts', cartRouter)
 
 
 // Handles any other endpoints [unassigned - endpoints]
