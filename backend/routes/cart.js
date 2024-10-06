@@ -4,15 +4,17 @@ const express = require("express");
 const authentication = require("../middleware/authentication")
 const authorization = require("../middleware/authorization");
 
-const { 
+const {
     addToCart,
-    } = require("../controllers/cart");
+    getUserCart } = require("../controllers/cart");
 
 const cartRouter = express.Router();
 
 
 
 cartRouter.post('/add',authentication, authorization("user"), addToCart);
+
+cartRouter.get('/',authentication, authorization("user"), getUserCart);
 
 
 
