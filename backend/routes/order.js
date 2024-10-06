@@ -5,13 +5,18 @@ const authorization = require("../middleware/authorization");
 
 
 const { 
-    createOrder,} = require("../controllers/order");
+    createOrder,
+    getUserOrders,
+    getOrderById} = require("../controllers/order");
 
 const ordertRouter = express.Router();
 
 
 ordertRouter.post('/create',authentication, authorization("user"), createOrder);
 
+ordertRouter.get('/',authentication, authorization("user"), getUserOrders);
+
+ordertRouter.get('/:id',authentication, authorization("user"), getOrderById);
 
 
 module.exports = ordertRouter;

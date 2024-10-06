@@ -1,15 +1,20 @@
 const cartModel = require('../models/cart');
+const productModel = require("../models/product")
 
 // Add product to cart
 const addToCart = async (req, res) => {
     console.log(req.token)
     const { product, quantity } = req.body;
     try {
+        /**/const productDetails = await productModel.findById(product)/**/
         let cart = await cartModel.findOne({ user: req.token.userId });
         if (!cart) {
             cart = new cartModel({
                 user: req.token.userId ,
-                items: [{ product: product, quantity:quantity }] });
+                items: [{ product: product,//objId
+                        quantity:quantity,
+                        price: productDetails.price}]
+                });
         } 
         else {
         const itemIndex = cart.items.findIndex((item) => item.product.toString() === product);
@@ -17,7 +22,9 @@ const addToCart = async (req, res) => {
             cart.items[itemIndex].quantity += quantity;
             } 
             else {
-            cart.items.push({ product: product, quantity:quantity });
+            cart.items.push({ product: product,
+                            quantity:quantity,
+                            price: productDetails.price });
             }
         }
         await cart.save();
