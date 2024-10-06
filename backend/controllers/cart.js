@@ -42,16 +42,36 @@ const getUserCart = async (req, res) => {
 
 
 // Remove a product from the cart
+const removeFromCart = async (req, res) => {
+    const { product } = req.body;
+    try {
+        const cart = await cartModel.findOne({ user: req.token.userId });
+        if (!cart) {
+            return res.status(404).json({ success: false, message: 'Cart not found' });
+        }
+        cart.items = cart.items.filter(item => !item.product.equals(product))
+        await cart.save();
+
+        res.status(200).json({ success: true, cart });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
 
 
 
 module.exports = {
     addToCart,
-    getUserCart };
+    getUserCart,
+    removeFromCart,
+};
 
 
 
 
+    /*item.product!==productId ****false
+    !item.product.equals(productId) ****true
+    */
 
 
 /**else {
