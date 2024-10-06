@@ -58,12 +58,31 @@ const removeFromCart = async (req, res) => {
     }
 };
 
+//Empty the Cart
+const EmptytheCart = async (req, res) => {
+    try {
+        const cart = await cartModel.findOne({ user: req.token.userId });
+
+        if (!cart) {
+            return res.status(404).json({ success: false, message: 'Cart not found' });
+        }
+        
+        cart.items = [];
+        await cart.save();
+        
+        res.status(200).json({ success: true, message: 'Cart Empty ' });
+    } 
+    catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
 
 
 module.exports = {
     addToCart,
     getUserCart,
     removeFromCart,
+    EmptytheCart,
 };
 
 
