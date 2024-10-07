@@ -15,14 +15,29 @@ const addReview = async (req, res) => {
 
         await newReview.save();
         res.status(201).json({ success: true, review: newReview });
+    } 
+    catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+
+// Get reviews of a specific product By ID of product
+const getProductReviewsById = async (req, res) => {
+    try {
+        const { productId } = req.params;
+        const reviews = await reviewModel.find({ product: productId }).populate('user', 'firstName lastName');
+
+        res.status(200).json({ success: true, reviews });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
 };
 
 
-//req.token.userId
+
 
 module.exports = { 
     addReview,
+    getProductReviewsById,
     };

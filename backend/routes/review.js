@@ -4,7 +4,7 @@ const authorization = require("../middleware/authorization");
 
 const{ 
     addReview,
-    } = require("../controllers/review");
+    getProductReviewsById,} = require("../controllers/review");
 
 const reviewRouter = express.Router();
 
@@ -12,5 +12,6 @@ const reviewRouter = express.Router();
 
 reviewRouter.post("/",authentication, authorization(["user","admin"]),addReview);
 
+reviewRouter.get("/:id",authentication, authorization(["user","admin"]),getProductReviewsById);
 
 module.exports = reviewRouter;
