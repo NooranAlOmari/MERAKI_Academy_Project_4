@@ -20,7 +20,7 @@ categoryRouter.get('/',authentication, authorization(["user","admin"]), getAllCa
 
 categoryRouter.put('/:id',authentication, authorization(["admin"]), updateCategoryById);
 
-categoryRouter.delete('/:id',authentication, authorization(["user","admin"]), deleteCategoryById);
+categoryRouter.delete('/:id',authentication, authorization(["admin"]), deleteCategoryById);
 
 
 

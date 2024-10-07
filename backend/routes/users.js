@@ -51,10 +51,10 @@ usersRouter.post("/login", login);
 ///////////////////
 /* JUST FOR ADMIN*/
 //////////////////
-usersRouter.get("/",authentication,authorization('admin'), getAllUser);
-usersRouter.get("/:id",authentication,authorization('admin'), getUserById);
-usersRouter.put("/:id",authentication,authorization('admin'), updateUserById);
-usersRouter.delete("/:id",authentication,authorization('admin'), deleteUserById);
+usersRouter.get("/",authentication,authorization(["admin"]), getAllUser);
+usersRouter.get("/:id",authentication,authorization(["admin"]), getUserById);
+usersRouter.put("/:id",authentication,authorization(["admin"]), updateUserById);
+usersRouter.delete("/:id",authentication,authorization(["admin"]), deleteUserById);
 
 
 

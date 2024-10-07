@@ -14,11 +14,15 @@ const productRouter = express.Router();
 
 
 
-productRouter.post("/",authentication, authorization("admin"),createProduct);
+productRouter.post("/",authentication, authorization(["admin"]),createProduct);
+
 productRouter.get("/",authentication, getAllProducts);
-productRouter.get("/:id",authentication, getProductById);
-productRouter.put("/:id",authentication, authorization("admin"), updateProductById);
-productRouter.delete("/:id",authentication, authorization("admin"),  deleteProductById);
+
+productRouter.get("/:id",authentication,authorization(["user"]), getProductById);
+
+productRouter.put("/:id",authentication, authorization(["admin"]), updateProductById);
+
+productRouter.delete("/:id",authentication, authorization(["admin"]),  deleteProductById);
 
 
 module.exports = productRouter;
