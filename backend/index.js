@@ -12,6 +12,8 @@ const rolesRouter = require("./routes/roles");
 const productRouter = require("./routes/product");
 const cartRouter = require("./routes/cart");
 const ordertRouter = require("./routes/order");
+const categoryRouter = require("./routes/category");
+
 
 app.use(cors());
 app.use(express.json());
@@ -22,6 +24,7 @@ app.use("/roles", rolesRouter);
 app.use('/products', productRouter)
 app.use('/carts', cartRouter)
 app.use('/orders', ordertRouter)
+app.use('/categories', categoryRouter)
 
 
 // Handles any other endpoints [unassigned - endpoints]

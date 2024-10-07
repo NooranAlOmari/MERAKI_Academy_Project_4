@@ -5,7 +5,6 @@ const cartModel = require('../models/cart');
 //Create a new Orde
 const createOrder = async (req, res) => {
     const userId = req.token.userId
-
     try {
         const cart = await cartModel.findOne({ user: userId })
         
@@ -28,7 +27,7 @@ const createOrder = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
-
+//shippingAddress, paymentMethod
 
 //Get all order for the user by user id (token)
 const getUserOrders = async (req, res) => {
@@ -61,6 +60,7 @@ const getOrderById = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
 
 
 module.exports = { 

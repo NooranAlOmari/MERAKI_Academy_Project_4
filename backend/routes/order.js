@@ -12,7 +12,7 @@ const {
 const ordertRouter = express.Router();
 
 
-ordertRouter.post('/create',authentication, authorization("user"), createOrder);
+ordertRouter.post('/',authentication, authorization("user"), createOrder);
 
 ordertRouter.get('/',authentication, authorization("user"), getUserOrders);
 

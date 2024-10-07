@@ -8,6 +8,15 @@ const mongoose = require("mongoose");
         unique: true,
     },
 
+    description: {
+      type: String,
+      default: ''
+  },
+
+    image: {
+      type: String, 
+      default: ''
+},
 });
 
 
