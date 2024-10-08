@@ -8,6 +8,7 @@ const {
     getProductById ,
     updateProductById,
     deleteProductById,
+    searchProducts
     } = require("../controllers/product");
 
 const productRouter = express.Router();
@@ -22,7 +23,10 @@ productRouter.get("/:id",authentication,authorization(["user"]), getProductById)
 
 productRouter.put("/:id",authentication, authorization(["admin"]), updateProductById);
 
-productRouter.delete("/:id",authentication, authorization(["admin"]),  deleteProductById);
+productRouter.delete("/:id",authentication, authorization(["admin" , "user"]),  deleteProductById);
 
+
+
+productRouter.get('/search/:name', searchProducts)
 
 module.exports = productRouter;

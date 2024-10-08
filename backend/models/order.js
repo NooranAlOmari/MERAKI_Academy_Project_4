@@ -23,12 +23,45 @@ const mongoose = require("mongoose");
             required: true,
         },
     }],
+   
+    /* */ paymentMethod: {
+        type: String,
+        enum: ['paypal', 'credit_card', 'bank_transfer'],
+        required: true
+    },
 
     isPaid: {
         type: Boolean,
         default: false,
     },
+   
+    shippingAddress: {
+        
+        fullAddress: {
+            type: String,
+            required: true,
+        },
+        street: {
+            type: String,
+            required: true
+        },
+        city: {
+            type: String,
+            required: true
+        },
+        state: {
+            type: String,
+            required: true
+        },
+        country: {
+            type: String,
+            required: true
+        }
+    },
 
+
+
+    
     paidAt: {
         type: Date,
     },
@@ -42,6 +75,7 @@ const mongoose = require("mongoose");
         type: Date,
     }
 });
+//shippingAddress, paymentMethod
 
 
 

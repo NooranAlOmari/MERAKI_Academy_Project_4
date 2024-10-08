@@ -5,6 +5,7 @@ const cartModel = require('../models/cart');
 //Create a new Orde
 const createOrder = async (req, res) => {
     const userId = req.token.userId
+    const { shippingAddress, paymentMethod } = req.body
     try {
         const cart = await cartModel.findOne({ user: userId })
         
@@ -17,6 +18,8 @@ const createOrder = async (req, res) => {
             orderItems: cart.items,
             totalAmount: cart.items.reduce((total, item) => total + item.product.price * item.quantity, 0),
             status: 'Pending',
+            shippingAddress: shippingAddress,
+            paymentMethod: paymentMethod
         });
 
         await newOrder.save();
@@ -28,6 +31,7 @@ const createOrder = async (req, res) => {
     }
 };
 //shippingAddress, paymentMethod
+
 
 //Get all order for the user by user id (token)
 const getUserOrders = async (req, res) => {

@@ -98,10 +98,30 @@ const deleteProductById = async (req, res) => {
     }
 };
 
+
+const searchProducts = async (req, res) => {
+    const { name } = req.params; 
+
+    try {
+        
+        const products = await productModel.find();
+
+        const filteredProducts = products.filter(product => 
+            product.name.toLowerCase().includes(name.toLowerCase())
+        );
+
+        res.status(200).json({ success: true, products: filteredProducts });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+
 module.exports = { 
 createProduct,
 getAllProducts,
 getProductById ,
 updateProductById,
 deleteProductById,
+searchProducts
 };
