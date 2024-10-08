@@ -9,14 +9,14 @@ const mongoose = require("mongoose");
     },
 
     description: {
-      type: String,
-      default: ''
-  },
+        type: String,
+        default: ''
+    },
 
     image: {
-      type: String, 
-      default: ''
-},
+        type: String, 
+        default: ''
+    },
 });
 
 

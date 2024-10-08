@@ -14,7 +14,13 @@ const mongoose = require("mongoose");
 
     image: {type: String,required: true,},
 
-    rating: {type: Number, default: 0},
+    rating: {
+      type: Number, 
+      required: true,
+      min: 1, 
+      max: 5, 
+  },
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
 
     numReviews: {type: Number,default: 0,}
 });
