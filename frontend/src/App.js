@@ -4,7 +4,8 @@ import { useState, createContext } from "react";
 import { Link, Route, Routes, useNavigate, useParams } from "react-router-dom";
 
 import Login from './components/Login';
-
+import Navbar from './components/Navbar';
+import Home from './components/Home'
 export const AppContext = createContext();
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
     {{
     token, setToken,
     }}>
-
+<Navbar></Navbar>
     <div className="App">
     <header className="App-header">
       <h1>App</h1>
@@ -29,6 +30,7 @@ const App = () => {
 
 
    <Routes>
+   <Route path="/" element={<Home/>} />
 
      
 
@@ -44,4 +46,4 @@ const App = () => {
 
 
 export default App;
-//<Route path="/" element={<Register/>} />
+   //<Route path="/" element={<Register/>} />
