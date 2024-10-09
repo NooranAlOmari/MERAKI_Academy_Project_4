@@ -1,27 +1,26 @@
-
 .navbar {
-    background-color: #333; 
-    padding: 10px;
-  }
-  
-  .navbar-list {
-    list-style-type: none; /*.*/
-    margin: 0; 
-    padding: 0; 
-    display: flex;
-  }
-  
-  .navbar-item {
-    margin: 0 15px; /*بين العناصر*/
-  }
-  
-  .navbar-item  {
-    color: white; 
-    text-decoration: none; 
-    font-weight: bold; 
-  }
-  
-  .navbar-item a:hover {
-    text-decoration: underline; 
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0; 
+  width: 100%; 
+  background-color: #333; 
+  z-index: 1000; /*u*/
+}
+
+.navbar-list {
+  list-style: none; /*.*/
+  padding: 0; 
+  margin: 0;
+  display: flex; 
+  justify-content: space-around; 
+}
+
+.navbar-item {
+  color: white; 
+  padding: 15px; /*=*/
+  cursor: pointer; 
+}
+
+.navbar-item:hover {
+  background-color: #555; 
+}
