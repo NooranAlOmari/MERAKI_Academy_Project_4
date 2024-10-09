@@ -3,9 +3,11 @@ import "./App.css";
 import { useState, createContext } from "react";
 import { Link, Route, Routes, useNavigate, useParams } from "react-router-dom";
 
+import AdminPanel from './components/AdminPanel/AdminPanel';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Home from './components/Home'
+import AuthPage from './components/AuthPage/AuthPage';
 export const AppContext = createContext();
 
 const App = () => {
@@ -19,10 +21,10 @@ const App = () => {
     {{
     token, setToken,
     }}>
-<Navbar></Navbar>
+    
+    <Navbar/>
     <div className="App">
     <header className="App-header">
-      <h1>App</h1>
     </header>
     
     </div>
@@ -30,11 +32,12 @@ const App = () => {
 
 
    <Routes>
-   <Route path="/" element={<Home/>} />
-
-     
+    <Route path="/" element={<Home/>} />
+    <Route path="/adminPanel" element={<AdminPanel/>} />
+    <Route path="/AuthPage" element={<AuthPage/>} />
 
    </Routes>
+
 
 </AppContext.Provider>
   

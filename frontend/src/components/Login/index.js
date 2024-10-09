@@ -4,7 +4,7 @@ import axios from "axios"
 import {useNavigate } from "react-router-dom";
 import './Login.css';
 
-const Login=()=>{
+const LogIn =()=>{
 
     const navigate = useNavigate();
 
@@ -29,7 +29,10 @@ const Login=()=>{
                 console.log(res);
                 setToken(res.data.token)
                 localStorage.setItem('token',res.data.token)
-                navigate("/articles")
+                /**/const isAdmin = res.data.isAdmin;
+                console.log(isAdmin)
+                navigate(isAdmin ? "/adminPanel" : "/articles")
+                
             })
             .catch((err) => {
                 console.log(err);
@@ -40,14 +43,26 @@ const Login=()=>{
 
 return (
 
-<div className="login-container">
+<div className="form-container sign-in-container">
 
-    <nav>
-        <p className="nav" onClick={() => navigate("/")}>Register</p>
-        <p className="nav" onClick={() => navigate("/users/login")}>Login</p>
-    </nav>
+<form >
 
-<div className="form-container">
+<h1>Sign in</h1>
+<p>Already have an account? sign in here!</p>
+
+        <div className="social-container">
+            <a href="#" className="social">
+                <i className="fab fa-facebook-f" />
+            </a>
+            <a href="#" className="social">
+                <i className="fab fa-google-plus-g" />
+            </a>
+            <a href="#" className="social">
+                <i className="fab fa-linkedin-in" />
+            </a>
+        </div>
+    <span>or use your account</span>
+
 <input
 type='email'
  placeholder='Email'
@@ -67,11 +82,13 @@ className="input-field"
 >Login</button>
 
 
- {message && <div>{message}</div>}
+ {message && <div className='message'>{message}</div>}
 
- </div>
+
+ </form >
+
 </div>
   )
 }
 
-export default Login
+export default LogIn

@@ -5,120 +5,71 @@ import axios from "axios"
 import './register.css';
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-   const navigate = useNavigate();
+  const handleRegister = () => {
+    axios.post("http://localhost:5000/users/register", {
+      firstName, email, password, role:"67007c95b2e85f1f89763cbc"
+    })
+      .then((res) => {
+        console.log(res);
+        setMessage(res.data.message);
+      })
+      .catch((err) => {
+        console.log(err);
+        setMessage(err.response.data.message);
+      });
+  };
 
+  return (
+    <div className="form-container sign-up-container">
+      <form >
+      <h1>Create Account</h1>
+      <p>Don't have an account? Create one here!</p>
+      
+       <div className="social-container">
+          <a href="#" className="social">
+            <i className="fab fa-facebook-f" />
+          </a>
+          <a href="#" className="social">
+            <i className="fab fa-google-plus-g" />
+          </a>
+          <a href="#" className="social">
+            <i className="fab fa-linkedin-in" />
+          </a>
+       </div>
+      <span>or use your email for registration</span>
 
-   const{
-       }= useContext(AppContext);
+      <input
+        type="text"
+        placeholder="Full Name"
+        onChange={(e) => setFirstName(e.target.value)}
+        className="input-field"
+      />
+      
+      <input
+        type="email"
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+        className="input-field"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+        className="input-field"
+      />
+      <button onClick={handleRegister}>sign up</button>
+      
+      {message && <div className="message">{message}</div>}
 
-
-   const[firstName,setfirstName]=useState("")
-   const[lastName,setlastName]=useState()
-   const[age,setage]=useState()
-   const[country  ,setcountry]=useState()
-   const[email,setemail]=useState()
-   const[password ,setpassword ]=useState()
-   const [message, setMessage] = useState('');
-
-   const handleRegister = ()=> {
-
-       axios.post("http://localhost:5000/users/register",{
-               firstName,
-               lastName,
-               age,
-               country,
-               email,
-               password,
-               role:"67007c95b2e85f1f89763cbc",
-               })
-           .then((res) => {
-               console.log(res);
-               setLoading(false);
-               setMessage(res.data.message)
-               navigate("/users/login")
-
-           })
-           .catch((err) => {
-               console.log(err);
-               setMessage(err.response.data.message)
-           });
-   }
-
-
-
- return (
-
-<div className="register-container">
-
-
-  <nav>
-<p onClick={()=>{navigate("/")}}className="nav">
-Register
-</p>
-
-<p onClick={()=>{navigate("/users/login")}}className="nav">
-Login
-</p>
-  </nav>
-
-
-  <div className="form-container">
-<input
-type='text'
-placeholder='First Name'
-onChange={(e)=>{setfirstName(e.target.value)}}
-className="input-field"
-></input>
-
-<input
-type='text'
-placeholder=' Last Name'
-onChange={(e)=>{setlastName(e.target.value)}}
-className="input-field"
-></input>
-
-<input
-type='number'
-placeholder='Age'
-onChange={(e)=>{setage(e.target.value)}}
-className="input-field"
-></input>
-
-<input
-type='text'
-placeholder='Country'
-onChange={(e)=>{setcountry(e.target.value)}}
-className="input-field"
-></input>
-
-<input
-type='email'
-placeholder='Email'
-onChange={(e)=>{setemail(e.target.value)}}
-className="input-field"
-></input>
-
-<input
-type='password'
-placeholder='Password'
-onChange={(e)=>{setpassword(e.target.value)}}
-className="input-field"
-></input>
-
-<button
-onClick={handleRegister}
->Register</button>
-
-{loading && <div className="loading">Loading....</div>}
-
-{message && <div className="message">{message}</div>}
-
-  </div>
-
-
-</div>
-)
-}
+      </form>
+    </div>
+  );
+};
 
 export default Register
