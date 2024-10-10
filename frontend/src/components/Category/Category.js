@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Categories = () => {
+const Category = () => {
     const [categories, setCategories] = useState([]);
+    const [message, setMessage] = useState('')
 
     useEffect(() => {
         axios.get('http://localhost:5000/categories')
             
             .then((response) => {
                 setCategories(response.data.categories);
+                setMessage(response.data.message);
             })
             .catch((error) => {
-            console.error('Error fetching categories:', error);
+            console.log('Error fetching categories:', error);
             });
     }, []);
 

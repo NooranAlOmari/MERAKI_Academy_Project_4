@@ -12,9 +12,14 @@ function AdminPanel() {
         <div className="admin-panel">
             <h1>Admin Panel</h1>
             <UserManage />
+
+            <h2>Category Management</h2>
             <CategoryManage />
+
             <ProductManage />
+
             <OrderManage />
+            
             <ReviewManage />
         </div>
     );
