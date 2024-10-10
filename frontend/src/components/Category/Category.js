@@ -1,10 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, {useContext,useEffect,useState} from 'react'
+import {AppContext} from '../../App'
+import {useNavigate } from "react-router-dom";
+import axios from "axios"
 
 const Category = () => {
-    const [categories, setCategories] = useState([]);
     const [message, setMessage] = useState('')
+    const navigate = useNavigate();
 
+
+    const{
+        setToken,
+        categories, setCategories,
+        selectedCategoryId, setSelectedCategoryId
+        }= useContext(AppContext);
+
+    
     useEffect(() => {
         axios.get('http://localhost:5000/categories')
             
@@ -17,6 +27,13 @@ const Category = () => {
             });
     }, []);
 
+
+    const handleCategoryClick = (categoryId) => {
+        setSelectedCategoryId(categoryId);
+        navigate(`/products/${categoryId}`); //
+    }
+
+
     return (   
         <div>
             <h2>Food Categories</h2>
@@ -24,7 +41,12 @@ const Category = () => {
             <div className="categories-container">
                 {categories.map((category) => (
                     <div key={category._id} className="category-card">
-                        <img src={category.image} alt={category.name} className="category-image" />
+                    <img
+                    src={category.image}
+                    alt={category.name}
+                    className="category-image"
+                    onClick={() => handleCategoryClick(category._id)} 
+                    />
                         <h3>{category.name}</h3>
                         <p>{category.description}</p>
                     </div>
@@ -33,6 +55,5 @@ const Category = () => {
             {message && <p>{message}</p>}
         </div>
     );
-};
-
+}
 export default Category;

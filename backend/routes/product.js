@@ -8,7 +8,8 @@ const {
     getProductById ,
     updateProductById,
     deleteProductById,
-    searchProducts
+    searchProducts,
+    getProductsByCategory
     } = require("../controllers/product");
 
 const productRouter = express.Router();
@@ -18,6 +19,8 @@ const productRouter = express.Router();
 productRouter.post("/",authentication, authorization(["admin"]),createProduct);
 
 productRouter.get("/",authentication, getAllProducts);
+
+productRouter.get("/:categoryId", getProductsByCategory);
 
 productRouter.get("/:id",authentication,authorization(["user"]), getProductById);
 

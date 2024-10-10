@@ -23,6 +23,7 @@ const mongoose = require("mongoose");
             required: true,
         },
     }],
+    totalAmount: { type: Number, required: true },
    
     /* */ paymentMethod: {
         type: String,
@@ -36,7 +37,7 @@ const mongoose = require("mongoose");
     },
    
     shippingAddress: {
-        
+
         fullAddress: {
             type: String,
             required: true,
@@ -59,8 +60,6 @@ const mongoose = require("mongoose");
         }
     },
 
-
-
     
     paidAt: {
         type: Date,
@@ -74,6 +73,7 @@ const mongoose = require("mongoose");
     deliveredAt: {
         type: Date,
     }
+    
 });
 //shippingAddress, paymentMethod
 

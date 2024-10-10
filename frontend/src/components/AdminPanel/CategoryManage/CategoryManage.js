@@ -2,8 +2,8 @@ import React, {useContext,useEffect,useState} from 'react'
 import {AppContext} from '../../../App'
 import {useNavigate } from "react-router-dom";
 import axios from "axios"
-import './CategoryManage.css';
-
+//import './CategoryManage.css';
+import Category from '../../Category/Category';
 
 function CategoryManage() {
 
@@ -15,7 +15,10 @@ function CategoryManage() {
 
     const{
         token,
+        setToken,
+        categories, setCategories
         }= useContext(AppContext);
+
     
         const AddCategory  = () => {
             axios
@@ -35,9 +38,9 @@ function CategoryManage() {
         }
         
 
-
-
+        
 return (
+<>
         <div className="add-category-form">
             <button onClick={() => setShowInputs(!showInputs)}>
                 {showInputs ? 'Cancel' : 'Add New Category'} 
@@ -74,6 +77,9 @@ return (
 
             {message && <div className="message">{message}</div>}
         </div>
+                                                          
+
+</>        
     );
 }
 
@@ -81,13 +87,3 @@ return (
 
 export default CategoryManage
 
-/**
- * 
- * return (
-        <div className="CategoryManage">
-        
-            <h2>Category Management</h2>
-        
-        </div>
-    )
- */

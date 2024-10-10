@@ -10,6 +10,7 @@ const LogIn =()=>{
 
     const{
         setToken,
+        isAdmin, setisAdmin
         }= useContext(AppContext);
 
 
@@ -31,7 +32,8 @@ const LogIn =()=>{
                 localStorage.setItem('token',res.data.token)
                 /**/const isAdmin = res.data.isAdmin;
                 console.log(isAdmin)
-                navigate(isAdmin ? "/adminPanel" : "/articles")
+                setisAdmin(isAdmin)
+                navigate(isAdmin && "/adminPanel" )
                 
             })
             .catch((err) => {

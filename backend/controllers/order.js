@@ -7,16 +7,17 @@ const createOrder = async (req, res) => {
     const userId = req.token.userId
     const { shippingAddress, paymentMethod } = req.body
     try {
-        const cart = await cartModel.findOne({ user: userId })
+        const cart = await cartModel.findOne({ user: userId }).populate('items.product')
         
         if (!cart || cart.items.length === 0) {
             return res.status(400).json({ success: false, message: 'Cart is empty' });
         }
+        const totalAmount = cart.items.reduce((total, item) => total + item.product.price * item.quantity, 0)
 
         const newOrder = new orderModel({
             user: userId,
             orderItems: cart.items,
-            totalAmount: cart.items.reduce((total, item) => total + item.product.price * item.quantity, 0),
+            totalAmount: totalAmount,
             status: 'Pending',
             shippingAddress: shippingAddress,
             paymentMethod: paymentMethod
@@ -83,3 +84,8 @@ module.exports = {
  * total = 0 : القيمة الي ببدأ منها
 */
 
+/* ب creat product
+.populate('items.product') مهمة كثير 
+عشان كل عنصر مرتبط بالسلة عشان مثلا اعرف سعره و ..
+
+ */

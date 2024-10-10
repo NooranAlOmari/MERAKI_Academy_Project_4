@@ -4,11 +4,11 @@ const productModel = require('../models/product');
 const createProduct  = (req, res) => {
     const { 
         name, description, price,
-        category, image } = req.body;
+        category,rating, image } = req.body;
 
     const newproduct = new productModel({    
         name,description, price, 
-        category, image });
+        category,rating, image });
 
     newproduct.save()
     .then((result) => {
@@ -30,7 +30,7 @@ const createProduct  = (req, res) => {
 // Get all products
 const getAllProducts = async (req, res) => {
     try {
-        const products = await productModel.find()//.populate('category');
+        const products = await productModel.find().populate('category');
             res.status(200).json({ 
             success: true,
             products:products });
@@ -42,13 +42,34 @@ const getAllProducts = async (req, res) => {
     }
 };
 
+// Get products for specific category By categoryId
+const getProductsByCategory = async (req, res) => {
+    const categoryId = req.params.categoryId;
+
+    try {
+        const products = await productModel.find({category: categoryId }).populate('category');
+            if (!products) return res.status(404).json({
+                success: false,
+                message: 'Products for this category not found' });
+
+            res.status(200).json({
+                success: true,
+                products:products });
+    } 
+    catch (err) {
+            res.status(500).json({
+                success: false,
+                message: err.message });
+    }
+};
+
 
 // Get a specific product By Id
 const getProductById = async (req, res) => {
     const productId = req.params.id;
 
     try {
-        const product = await productModel.findById(productId)//.populate('category');
+        const product = await productModel.findById(productId).populate('category');
             if (!product) return res.status(404).json({
                 success: false,
                 message: 'Product not found' });
@@ -123,5 +144,6 @@ getAllProducts,
 getProductById ,
 updateProductById,
 deleteProductById,
-searchProducts
+searchProducts,
+getProductsByCategory
 };

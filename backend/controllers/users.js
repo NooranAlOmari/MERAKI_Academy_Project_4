@@ -12,7 +12,7 @@ const register = (req, res) => {
     country,
     email,
     password,
-    role:"6700899e810b83f37a76ea2d",
+    role:"67007c95b2e85f1f89763cbc",
   });
 
   user
@@ -20,7 +20,7 @@ const register = (req, res) => {
     .then((result) => {
       res.status(201).json({
         success: true,
-        message: `Account Created Successfully`,
+        message: `Registration successful! You can now log in.`,
         author: result,
       });
     })
@@ -72,11 +72,15 @@ const login = (req, res) => {
           expiresIn: "60m",
         };
         const token = jwt.sign(payload, process.env.SECRET, options);
+        console.log (result)
+        const isAdmin = result.role.role === 'admin';
         res.status(200).json({
           success: true,
           message: `Valid login credentials`,
           token: token,
+          isAdmin: isAdmin
         });
+        
       } catch (error) {
         throw new Error(error.message);
       }

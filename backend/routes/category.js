@@ -16,7 +16,7 @@ const categoryRouter = express.Router();
 
 categoryRouter.post('/',authentication, authorization(["admin"]), addCategory);
 
-categoryRouter.get('/',authentication, authorization(["user","admin"]), getAllCategories);
+categoryRouter.get('/', getAllCategories);
 
 categoryRouter.put('/:id',authentication, authorization(["admin"]), updateCategoryById);
 
