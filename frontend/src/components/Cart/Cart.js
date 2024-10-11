@@ -13,6 +13,7 @@ const Cart = ({ productId, productName, productPrice }) => {
     const{
         token,
         isLoggedIn , setIsLoggedIn,
+        cart, setupdateCart,
         }= useContext(AppContext);
 
     const handleAddToCart = () => {
@@ -30,7 +31,9 @@ const Cart = ({ productId, productName, productPrice }) => {
         .then((response) => {
             if (response.data.success) {
                 setMessage('Product added to cart successfully!');
-                
+                setupdateCart(response.data.cart)
+                navigate(-1); 
+
             } else {
                 setMessage('Failed to add product to cart.');
             }
@@ -57,7 +60,7 @@ const Cart = ({ productId, productName, productPrice }) => {
 
             <button onClick={handleAddToCart}>Add to Cart</button>
 
-            {message && <p>{message}</p>}
+            
         </div>
     );
 };
