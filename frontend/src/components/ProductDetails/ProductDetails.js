@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';  
 import axios from 'axios';
+import Cart from '../Cart/Cart';
 
 const ProductDetails = () => {
     const [product, setProduct] = useState(null);
-    const [quantity, setQuantity] = useState(1);  // 
 
     const { productId } = useParams();  
 
@@ -22,13 +22,7 @@ const ProductDetails = () => {
         }
     }, [productId]);
     
-    const handleAddToCart = () => {
-        console.log(`Adding ${quantity} of ${product.name} to the cart`);
-        // add to cart
-    };
 
-    const increaseQuantity = () => setQuantity(quantity + 1);
-    const decreaseQuantity = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
 
     return (
         <div className="product-details">
@@ -39,15 +33,13 @@ const ProductDetails = () => {
                     <p>{product.description}</p>
                     <p>Price: ${product.price}</p>
 
-                    {/* counter */}
-                    <div className="quantity-control">
-                        <button onClick={decreaseQuantity}>-</button>
-                        <span>{quantity}</span>
-                        <button onClick={increaseQuantity}>+</button>
-                    </div>
-
-                    {/*Add to cart*/}
-                    <button onClick={handleAddToCart}>Add to Cart</button>
+                    {/*Cart component &
+                    passing data as props*/}
+                    <Cart 
+                        productId={product._id} 
+                        productName={product.name} 
+                        productPrice={product.price}
+                    />
                 </>
             ) : (
                 <p>Loading product details...</p>

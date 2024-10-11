@@ -18,6 +18,7 @@ const App = () => {
   
   const [token, setToken] = useState(localStorage.getItem('token')||'')
   const [categories, setCategories] = useState([]);
+  const [isLoggedIn , setIsLoggedIn ] = useState(false)
   const [isAdmin, setisAdmin] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [products, setProducts] = useState([])
@@ -29,10 +30,12 @@ const App = () => {
     {{
     token, setToken,
     categories, setCategories,
+    isLoggedIn , setIsLoggedIn,
     isAdmin, setisAdmin,
     selectedCategoryId, setSelectedCategoryId,
     products, setProducts,
-    selectedproductId, setselectedproductId
+    selectedproductId, setselectedproductId,
+    
     }}>
     
     <Navbar/>

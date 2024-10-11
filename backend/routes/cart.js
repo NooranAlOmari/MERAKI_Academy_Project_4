@@ -14,7 +14,7 @@ const cartRouter = express.Router();
 
 
 
-cartRouter.post('/add',authentication, authorization(["user"]), addToCart);
+cartRouter.post('/add',authentication, authorization(["user","admin"]), addToCart);
 
 cartRouter.get('/',authentication, authorization(["user"]), getUserCart);
 

@@ -10,7 +10,8 @@ const LogIn =()=>{
 
     const{
         setToken,
-        isAdmin, setisAdmin
+        isAdmin, setisAdmin,
+        isLoggedIn , setIsLoggedIn,
         }= useContext(AppContext);
 
 
@@ -30,6 +31,7 @@ const LogIn =()=>{
                 console.log(res);
                 setToken(res.data.token)
                 localStorage.setItem('token',res.data.token)
+                setIsLoggedIn(true);
                 /**/const isAdmin = res.data.isAdmin;
                 console.log(isAdmin)
                 setisAdmin(isAdmin)
