@@ -10,7 +10,7 @@ import Home from './components/Home'
 import AuthPage from './components/AuthPage/AuthPage';
 import Products from './components//Products/Products';
 import ProductDetails from './components/ProductDetails/ProductDetails';
-
+import CartPage from './components/Cart/CartPage';
 export const AppContext = createContext();
 
 const App = () => {
@@ -55,16 +55,16 @@ const App = () => {
     <Route path="/AuthPage" element={<AuthPage/>} />
     <Route path="/products/:categoryId" element={<Products />} />
     <Route path="/products/details/:productId" element={<ProductDetails />} />
-  
+    <Route path="/cart" element={<CartPage />} />
    </Routes>
-
+   
 
 </AppContext.Provider>
   
 
   )
 }
-
+////AuthPage  /cart
 
 
 

@@ -3,13 +3,15 @@ import { AppContext } from '../../App';
 import { useParams } from 'react-router-dom';  
 import axios from 'axios';
 import {useNavigate } from "react-router-dom";
+import CartSummary from '../Cart/CartSummary';
 
 const Products = () => {
     
     const navigate = useNavigate();
 
     const { setProducts, products ,
-            setselectedproductId
+            setselectedproductId,
+            cart
     } = useContext(AppContext);
 
     const { categoryId } = useParams();  
@@ -33,7 +35,7 @@ console.log(categoryId )
         
     }
 
-
+    console.log('Cart items:', cart)
     return (
         <div>
             {products && products.length > 0 ? (
@@ -53,6 +55,12 @@ console.log(categoryId )
             ) : (
                 <p>No products found for this category.</p>
             )}
+
+            {/* Show CartSummary only if cart contains items*/}
+            {cart && cart.items && cart.items.length > 0 && (
+                <CartSummary />
+            )}
+
         </div>
     );
 };

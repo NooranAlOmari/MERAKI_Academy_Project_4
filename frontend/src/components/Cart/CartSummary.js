@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { AppContext } from './App'; 
+import { AppContext } from '../../App'; 
 import { useNavigate } from 'react-router-dom';
 
 const CartSummary = () => {
+    
     const { cart } = useContext(AppContext); 
     const navigate = useNavigate();
 
@@ -15,7 +16,7 @@ const CartSummary = () => {
         <div className="cart-summary" style={cartSummaryStyle}>
 
             <p>Total: ${totalPrice.toFixed(2)} ({totalItems} items)</p>
-            
+
             <button onClick={() => navigate('/cart')}>Show Cart</button>
         </div>
     );
