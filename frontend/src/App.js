@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home'
 import AuthPage from './components/AuthPage/AuthPage';
 import Products from './components//Products/Products';
+import ProductDetails from './components/ProductDetails/ProductDetails';
 
 export const AppContext = createContext();
 
@@ -20,7 +21,8 @@ const App = () => {
   const [isAdmin, setisAdmin] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [products, setProducts] = useState([])
-
+  const [selectedproductId, setselectedproductId] = useState(null);
+  
   return (
 
 <AppContext.Provider value=
@@ -29,7 +31,8 @@ const App = () => {
     categories, setCategories,
     isAdmin, setisAdmin,
     selectedCategoryId, setSelectedCategoryId,
-    products, setProducts
+    products, setProducts,
+    selectedproductId, setselectedproductId
     }}>
     
     <Navbar/>
@@ -46,7 +49,7 @@ const App = () => {
     <Route path="/adminPanel" element={<AdminPanel/>} />
     <Route path="/AuthPage" element={<AuthPage/>} />
     <Route path="/products/:categoryId" element={<Products />} />
-
+    <Route path="/products/details/:productId" element={<ProductDetails />} />
   
    </Routes>
 

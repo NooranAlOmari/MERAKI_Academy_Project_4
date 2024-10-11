@@ -2,9 +2,16 @@ import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../../App';
 import { useParams } from 'react-router-dom';  
 import axios from 'axios';
+import {useNavigate } from "react-router-dom";
 
 const Products = () => {
-    const { setProducts, products } = useContext(AppContext);
+    
+    const navigate = useNavigate();
+
+    const { setProducts, products ,
+            setselectedproductId
+    } = useContext(AppContext);
+
     const { categoryId } = useParams();  
 
 console.log(categoryId )
@@ -20,16 +27,26 @@ console.log(categoryId )
         }
     }, [categoryId, setProducts]);  // Re-run when categoryId changes
 
+    const handleCategoryClick = (productId) => {
+        setselectedproductId(productId);
+        navigate(`/products/details/${productId}`); //
+        
+    }
+
+
     return (
         <div>
             {products && products.length > 0 ? (
                 <div className="products-container">
                     {products.map((product) => (
                         <div key={product._id} className="product-card">
-                            <img src={product.image} alt={product.name} className="product-image" />
+                            <img src={product.image} alt={product.name} className="product-image"
+                            onClick={() => handleCategoryClick(product._id)} 
+                            />
                             <h3>{product.name}</h3>
                             <p>{product.description}</p>
                             <p>Price: ${product.price}</p>
+                            <p>{product.rating}</p>
                         </div>
                     ))}
                 </div>

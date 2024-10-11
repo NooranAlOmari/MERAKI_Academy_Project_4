@@ -6,7 +6,7 @@ import axios from "axios"
 const Category = () => {
     const [message, setMessage] = useState('')
     const navigate = useNavigate();
-
+    
 
     const{
         setToken,

@@ -66,7 +66,7 @@ const getProductsByCategory = async (req, res) => {
 
 // Get a specific product By Id
 const getProductById = async (req, res) => {
-    const productId = req.params.id;
+    const productId = req.params.productId;
 
     try {
         const product = await productModel.findById(productId).populate('category');

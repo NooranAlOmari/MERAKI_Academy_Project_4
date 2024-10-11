@@ -22,7 +22,7 @@ productRouter.get("/",authentication, getAllProducts);
 
 productRouter.get("/:categoryId", getProductsByCategory);
 
-productRouter.get("/:id",authentication,authorization(["user"]), getProductById);
+productRouter.get("/details/:productId", getProductById);
 
 productRouter.put("/:id",authentication, authorization(["admin"]), updateProductById);
 
@@ -33,3 +33,10 @@ productRouter.delete("/:id",authentication, authorization(["admin" , "user"]),  
 productRouter.get('/search/:name', searchProducts)
 
 module.exports = productRouter;
+
+
+/**
+ * productRouter.get("/:categoryId"getProductsByCategory);
+
+productRouter.get("/:productId", getProductById);
+ */
