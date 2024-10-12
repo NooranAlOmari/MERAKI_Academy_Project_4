@@ -11,8 +11,9 @@ import AuthPage from './components/AuthPage/AuthPage';
 import Products from './components//Products/Products';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import CartPage from './components/Cart/CartPage';
-export const AppContext = createContext();
+import Footer from './components/Footer/Footer';
 
+export const AppContext = createContext();
 const App = () => {
   
   
@@ -58,7 +59,8 @@ const App = () => {
     <Route path="/products/details/:productId" element={<ProductDetails />} />
     <Route path="/cart" element={<CartPage />} />
    </Routes>
-   
+    
+    <Footer/>
 
 </AppContext.Provider>
   

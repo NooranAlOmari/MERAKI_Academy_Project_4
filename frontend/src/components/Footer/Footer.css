@@ -1,0 +1,68 @@
+.footer-section {
+    margin: 0;
+    padding: 15px;
+    
+}
+.footer {
+    display: flex;
+    width: 100vw; /* عرض الصفحة كلها*/
+    bottom: 0;/*عشان يضل تحت*/
+    left: 0;
+    right: 0;
+    justify-content: space-around;
+    background: linear-gradient(90deg, #ff8a00, #da1b60); 
+    color: #fff;
+    position: relative;
+    margin-top: 50px;/****عشان تبعد العناصر تبعت الصفحات عنه*****/
+}
+
+.footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+   
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff; 
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-section p {
+    margin: 5px 0;
+}
+
+.footer-section input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #333; 
+}
+.footer-section button {
+    padding: 10px 20px;
+    background-color: #fff; 
+    color: #ff8a00; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.footer-section button:hover {
+    background-color: #e56a0d; 
+    color: #fff; 
+}

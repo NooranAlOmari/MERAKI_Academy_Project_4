@@ -1,6 +1,7 @@
 import React from 'react';
 import Category from '../Category/Category';
 import './Home.css';
+import Footer from '../Footer/Footer';
 
 function Home() {
   return (
@@ -22,6 +23,7 @@ function Home() {
       </header>
 
       <Category />
+      
     </>
   );
 }

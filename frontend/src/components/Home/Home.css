@@ -1,9 +1,12 @@
 .home-header {
     position: relative;
     height: 100vh;
-    margin-top: 70px; /*  navbar height عشان */
+    margin-top: 183px; /*  navbar height عشان */
+    margin-bottom: 80px;/**/
     overflow: hidden;
     z-index: 1;
+    
+    
 }
   
 .header-background {
@@ -15,6 +18,7 @@
     object-fit: cover;
     object-position: center; 
     z-index: -1; 
+    border: none; 
 }
   
 .header-content {
@@ -61,6 +65,7 @@
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
+    text-transform: none;
     transition: background-color 0.3s ease;
 }
   

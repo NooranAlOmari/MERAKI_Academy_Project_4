@@ -1,6 +1,11 @@
-.App {
+.AuthPage {
     font-family: sans-serif;
     text-align: center;
+    margin-top: 280px/*navbarمساحة من فوق عشان */;
+    display :grid;
+    justify-content: center;
+    align-items: center
+  
   }
   
   @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
@@ -17,7 +22,8 @@
     flex-direction: column;
     font-family: "Montserrat", sans-serif;
     height: 100vh;
-    margin: -20px 0 50px;
+    margin: -20px 0 50px ;
+    
   }
   
   h1 {

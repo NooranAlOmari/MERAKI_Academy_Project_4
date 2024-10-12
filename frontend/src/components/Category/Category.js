@@ -35,8 +35,7 @@ const Category = () => {
 
 
     return (   
-        <div>
-            <h2>Food Categories</h2>
+        <div className='categorized'>
             
             <div className="categories-container">
                 {categories.map((category) => (

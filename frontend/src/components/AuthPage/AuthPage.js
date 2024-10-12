@@ -3,7 +3,7 @@ import "./AuthPage.css";
 import LogIn from '../Login'
 import Register from "../Register";
 
-export default function App() {
+export default function AuthPage() {
   const [type, setType] = useState("signIn");
   const handleOnClick = text => {
     if (text !== type) {
@@ -14,7 +14,7 @@ export default function App() {
   const containerClass =
     "container " + (type === "signUp" ? "right-panel-active" : "");
   return (
-    <div className="App">
+    <div className="AuthPage">
       <h2>Sign in/up Form</h2>
       <div className={containerClass} id="container">
         <Register />

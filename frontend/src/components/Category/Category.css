@@ -1,6 +1,9 @@
+.categorized {
+    padding: 35px; /*البعد عن الفيديو*/
+}
+
 
 .categories-container {
-  padding: 35px; /* البعد عن الفيديو */
   display: flex;
   flex-wrap: wrap; 
   justify-content: space-around; 
