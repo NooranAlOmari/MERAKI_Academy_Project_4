@@ -22,7 +22,7 @@ cartRouter.get('/',authentication, authorization(["user","admin"]), getUserCart)
 cartRouter.put('/updateQuantity', authentication, authorization(["user","admin"]), updateCartQuantity);
 
 
-cartRouter.delete('/',authentication, authorization(["user"]), removeFromCart);
+cartRouter.delete('/',authentication, authorization(["user","admin"]), removeFromCart);
 
 cartRouter.delete('/empty',authentication, authorization(["user"]), EmptytheCart);
 
