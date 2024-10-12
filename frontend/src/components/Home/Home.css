@@ -1,0 +1,69 @@
+.home-header {
+    position: relative;
+    height: 100vh;
+    margin-top: 70px; /*  navbar height عشان */
+    overflow: hidden;
+    z-index: 1;
+}
+  
+.header-background {
+    position: absolute; 
+    top: 117px; 
+    left: 0;
+    width: 100%;
+        height: 130%; 
+    object-fit: cover;
+    object-position: center; 
+    z-index: -1; 
+}
+  
+.header-content {
+    position: absolute; 
+        top: 85%; /*  عموديًا */
+    left: 50%;
+    transform: translate(-50%, -50%); /* مركز الكنتنت*/
+    text-align: center;
+    color: white;
+    z-index: 2; 
+    width: 100%; 
+}
+  
+.header-content h1 {
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+}
+  
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 800px;
+    width: 100%;
+    border-radius: 25px;
+}
+  
+.search-bar input {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 25px 0 0 25px;
+    font-size: 16px;
+    outline: none;
+}
+  
+.search-bar button {
+    padding: 12px 20px;
+    border: none;
+    background-color: hwb(5 29% 0%);
+    color: white;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+  
+.search-bar button:hover {
+    background-color: hwb(24 7% 2% / 0.83);
+}

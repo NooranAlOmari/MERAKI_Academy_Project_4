@@ -2,7 +2,7 @@ import React, {useContext,useEffect,useState} from 'react'
 import {AppContext} from '../../App'
 import {useNavigate } from "react-router-dom";
 import axios from "axios"
-
+import './Category.css'
 const Category = () => {
     const [message, setMessage] = useState('')
     const navigate = useNavigate();

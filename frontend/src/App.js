@@ -6,7 +6,7 @@ import { Link, Route, Routes, useNavigate, useParams } from "react-router-dom";
 import AdminPanel from './components/AdminPanel/AdminPanel';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
-import Home from './components/Home'
+import Home from './components/Home/Home'
 import AuthPage from './components/AuthPage/AuthPage';
 import Products from './components//Products/Products';
 import ProductDetails from './components/ProductDetails/ProductDetails';
@@ -41,6 +41,7 @@ const App = () => {
     }}>
     
     <Navbar/>
+    
     <div className="App">
     <header className="App-header">
     </header>

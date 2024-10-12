@@ -7,13 +7,21 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <ul className="navbar-list">
-        <li className="navbar-item" onClick={() => navigate('/')}>Home</li>
-        <li className="navbar-item" onClick={() => navigate('/AuthPage')}>Login</li>
-        <li className="navbar-item">Cart</li>
-        <li className="navbar-item">My Orders</li>
-        <li className="navbar-item">Search</li>
-      </ul>
+      <div className="navbar-item" onClick={() => navigate('/')}>
+        <i className="fas fa-home"></i> Home
+      </div>
+      <div className="navbar-item" onClick={() => navigate('/AuthPage')}>
+        <i className="fas fa-sign-in-alt"></i> Log In
+      </div>
+      <div className="navbar-item">
+        <i className="fas fa-shopping-cart"></i> Cart
+      </div>
+      <div className="navbar-item">
+        <i className="fas fa-box"></i> My Orders
+      </div>
+      <div className="navbar-item">
+        <i className="fas fa-search"></i> Search
+      </div>
     </nav>
   );
 };
