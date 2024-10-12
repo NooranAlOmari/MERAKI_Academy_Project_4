@@ -8,7 +8,8 @@ const {
     addToCart,
     getUserCart,
     removeFromCart,
-    EmptytheCart,} = require("../controllers/cart");
+    EmptytheCart,
+    updateCartQuantity} = require("../controllers/cart");
 
 const cartRouter = express.Router();
 
@@ -16,7 +17,10 @@ const cartRouter = express.Router();
 
 cartRouter.post('/add',authentication, authorization(["user","admin"]), addToCart);
 
-cartRouter.get('/',authentication, authorization(["user"]), getUserCart);
+cartRouter.get('/',authentication, authorization(["user","admin"]), getUserCart);
+
+cartRouter.put('/updateQuantity', authentication, authorization(["user","admin"]), updateCartQuantity);
+
 
 cartRouter.delete('/',authentication, authorization(["user"]), removeFromCart);
 

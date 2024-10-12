@@ -23,7 +23,7 @@ const App = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [products, setProducts] = useState([])
   const [selectedproductId, setselectedproductId] = useState(null);
-  const [cart, setupdateCart] = useState(null);
+  const [cart, setupdateCart] = useState();
   
   return (
 
@@ -64,7 +64,7 @@ const App = () => {
 
   )
 }
-////AuthPage  /cart
+////AuthPage  
 
 
 
