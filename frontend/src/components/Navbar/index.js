@@ -6,6 +6,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
+    
     <nav className="navbar">
       <div className="navbar-item" onClick={() => navigate('/')}>
         <i className="fas fa-home"></i> Home
@@ -13,14 +14,14 @@ const Navbar = () => {
       <div className="navbar-item" onClick={() => navigate('/AuthPage')}>
         <i className="fas fa-sign-in-alt"></i> Log In
       </div>
-      <div className="navbar-item">
-        <i className="fas fa-shopping-cart"></i> Cart
+      <div className="navbar-item" onClick={() => navigate('/our-chef')}>
+        <i className="fas fa-user-tie"></i> Our Chefs
       </div>
       <div className="navbar-item">
         <i className="fas fa-box"></i> My Orders
       </div>
       <div className="navbar-item">
-        <i className="fas fa-search"></i> Search
+        <i className="fas fa-search" onClick={() => navigate('/Favorites')}></i> Search
       </div>
     </nav>
   );

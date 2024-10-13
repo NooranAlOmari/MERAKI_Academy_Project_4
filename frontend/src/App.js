@@ -12,6 +12,7 @@ import Products from './components//Products/Products';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import CartPage from './components/Cart/CartPage';
 import Footer from './components/Footer/Footer';
+import Favorites from './components/Favoritess/Favoritess';
 
 export const AppContext = createContext();
 const App = () => {
@@ -25,7 +26,8 @@ const App = () => {
   const [products, setProducts] = useState([])
   const [selectedproductId, setselectedproductId] = useState(null);
   const [cart, setupdateCart] = useState();
-  
+  const [favorites, setFavorites] = useState([]);
+
   return (
 
 <AppContext.Provider value=
@@ -37,7 +39,8 @@ const App = () => {
     selectedCategoryId, setSelectedCategoryId,
     products, setProducts,
     selectedproductId, setselectedproductId,
-    cart, setupdateCart
+    cart, setupdateCart,
+    favorites, setFavorites
     
     }}>
     
@@ -58,7 +61,8 @@ const App = () => {
     <Route path="/products/:categoryId" element={<Products />} />
     <Route path="/products/details/:productId" element={<ProductDetails />} />
     <Route path="/cart" element={<CartPage />} />
-   </Routes>
+    <Route path="/Favorites" element={<Favorites />} />
+    </Routes>
     
     <Footer/>
 

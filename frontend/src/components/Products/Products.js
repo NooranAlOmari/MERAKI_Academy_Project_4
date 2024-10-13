@@ -20,11 +20,11 @@ const Products = () => {
     
     const navigate = useNavigate();
 
-    const [favorites, setFavorites] = useState([]);
 
     const { setProducts, products ,
             setselectedproductId,
-            cart
+            cart,
+            favorites, setFavorites
     } = useContext(AppContext);
 
     const { categoryId } = useParams();  
@@ -87,8 +87,8 @@ return (
                                 onClick={() => handleCategoryClick(product._id)}
                             />
                             <FaHeart
-                                className={`favorite-icon ${favorites.includes(product._id) ? 'favorited' : ''}`}
-                                onClick={() => toggleFavorite(product._id)}
+                            className={`favorite-icon ${favorites.includes(product._id) ? 'favorited' : ''}`}
+                            onClick={() => toggleFavorite(product._id)}
                             />
                         </div>
                         <div className="details">
