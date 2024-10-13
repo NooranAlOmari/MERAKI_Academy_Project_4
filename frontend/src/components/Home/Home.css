@@ -1,12 +1,11 @@
 .home-header {
     position: relative;
     height: 100vh;
-    margin-top: 183px; /*  navbar height عشان */
+    margin-top: 387px; /*  navbar height عشان */
     margin-bottom: 35px;/*مسافة بين فيديو كاتيقوري*/
     overflow: hidden;
     z-index: 1;
-    
-    
+    font-family: 'Arial', sans-serif;
 }
   
 .header-background {
@@ -14,7 +13,7 @@
     top: 117px; 
     left: 0;
     width: 100%;
-        height: 130%; 
+        height: 125%; 
     object-fit: cover;
     object-position: center; 
     z-index: -1; 
@@ -23,7 +22,7 @@
   
 .header-content {
     position: absolute; 
-        top: 85%; /*  عموديًا */
+        top: 82%; /*  عموديًا */
     left: 50%;
     transform: translate(-50%, -50%); /* مركز الكنتنت*/
     text-align: center;
@@ -45,6 +44,7 @@
     max-width: 800px;
     width: 100%;
     border-radius: 25px;
+    margin-top: 40px;
 }
   
 .search-bar input {
