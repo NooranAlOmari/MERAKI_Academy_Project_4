@@ -14,6 +14,7 @@ export default function AuthPage() {
   const containerClass =
     "container " + (type === "signUp" ? "right-panel-active" : "");
   return (
+
     <div className="AuthPage">
       <h2>Sign in/up Form</h2>
       <div className={containerClass} id="container">
@@ -49,5 +50,6 @@ export default function AuthPage() {
         </div>
       </div>
     </div>
+    
   );
 }

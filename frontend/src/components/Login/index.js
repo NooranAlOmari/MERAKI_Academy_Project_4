@@ -29,12 +29,14 @@ const LogIn =()=>{
             })
             .then((res) => {
                 console.log(res);
+
                 setToken(res.data.token)
                 localStorage.setItem('token',res.data.token)
-                setIsLoggedIn(true);
+
                 /**/const isAdmin = res.data.isAdmin;
                 console.log(isAdmin)
                 setisAdmin(isAdmin)
+                localStorage.setItem('isAdmin', isAdmin);
                 navigate(isAdmin && "/adminPanel" )
                 
             })

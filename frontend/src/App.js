@@ -21,13 +21,17 @@ const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token')||'')
   const [categories, setCategories] = useState([]);
   const [isLoggedIn , setIsLoggedIn ] = useState(false)
-  const [isAdmin, setisAdmin] = useState([]);
+  const [isAdmin, setisAdmin] = useState(localStorage.getItem('isAdmin') === 'true');
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [products, setProducts] = useState([])
   const [selectedproductId, setselectedproductId] = useState(null);
   const [cart, setupdateCart] = useState();
   const [favorites, setFavorites] = useState([]);
+  const [quantity, setQuantity] = useState(1);
 
+
+  const increaseQuantity = () => setQuantity(quantity + 1);
+  const decreaseQuantity = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
   return (
 
 <AppContext.Provider value=
@@ -40,7 +44,9 @@ const App = () => {
     products, setProducts,
     selectedproductId, setselectedproductId,
     cart, setupdateCart,
-    favorites, setFavorites
+    favorites, setFavorites,
+    quantity, setQuantity,
+    increaseQuantity, decreaseQuantity,
     
     }}>
     
