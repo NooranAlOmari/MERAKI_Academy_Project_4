@@ -4,11 +4,11 @@ const productModel = require('../models/product');
 const createProduct  = (req, res) => {
     const { 
         name, description, price,
-        category,rating, image } = req.body;
+        category,rating, image,calories } = req.body;
 
     const newproduct = new productModel({    
         name,description, price, 
-        category,rating, image });
+        category,rating, image,calories });
 
     newproduct.save()
     .then((result) => {

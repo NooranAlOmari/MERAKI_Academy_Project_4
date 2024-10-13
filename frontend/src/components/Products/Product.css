@@ -1,0 +1,191 @@
+
+/*margin-top: 950px;/*navbarمسافة عشان تنزل لتحت */
+
+.The-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    max-width: 100%;
+    margin-top: 950px; /* navbarمسافة عشان تنزل لتحت */
+}
+
+.upper-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #e3f3e0;
+    width: 95vw;/*عرض الاخضر*/
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content .small-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-video {
+    max-width: 25%;
+    position: relative;
+}
+
+.hero-video video {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #d7d419;
+}
+/*********************************************/
+.alll-cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 58px; /*فوق كل الكارد*/
+    justify-content: space-around;
+    padding: 10px;
+    gap: 20px; /*الفراغ بين الكارد*/
+    background-color: #f0f0f0;
+    
+}
+
+.food-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.food-card {
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    border-radius: 20px; 
+    margin: 10px;
+    width: 300px; /* ************************************* */
+    height: 420px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    position: relative; /* عشان مكان الفيفوريت آيكون*/
+    box-sizing: border-box;
+  /*  background-color: #d7d41925;*/
+}
+
+
+/* صورة دائرية */
+.img-wrapper {
+    /* position: relative; */
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    margin: 20px auto;
+    /* overflow: hidden; */
+}
+
+
+.img-wrapper img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+     transition: transform 0.3s ease-in-out;
+}
+
+/*اللون الافتراضي *** أيقونة القلب */
+.favorite-icon {
+    position: absolute;
+    top: 20px; 
+    right:20px; 
+    color: #ccc; /*اللون الافتراضي */
+    font-size: 24px; 
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.favorite-icon:hover {
+    color: #ff6f61; 
+}
+
+/*اللون لما تصير فيفروتد *** أيقونة القلب */
+.favorite-icon.favorited {
+    color: #ff4d4d; 
+}
+
+.details {
+    padding: 20px;
+    background: linear-gradient(135deg, #ff8a00, #da1b60); 
+    border-radius: 0 0 20px 20px; 
+    color: #fff; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;     
+}
+
+
+.details h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px; 
+}
+
+
+
+.time-rating {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+
+
+.time-rating p {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* الفراغ بين الايقونة و النص*/
+    margin-top: 0; /* تقليل المسافة الي فوق عشان ارفعهم*/
+}
+
+.time-rating i {
+    color: #ffd700; 
+    font-size: 90px; 
+}
+
+.calori {
+    font-size: 18px; 
+    color: hsl(0, 19%, 88%); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    gap: 5px; /* المسافة بين الأيقونة والنص */
+}
+
+.calori .material-icons {
+    font-size: 24px; 
+    color: red; 
+    
+}
+
+/*****************/
+.red-icon {
+    font-size: 24px; 
+    color: red; 
+}
+.ratee {
+    font-size: 16px; 
+}

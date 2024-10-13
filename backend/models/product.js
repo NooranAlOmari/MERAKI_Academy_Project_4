@@ -22,7 +22,8 @@ const mongoose = require("mongoose");
   },
     reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
 
-    numReviews: {type: Number,default: 0,}
+    numReviews: {type: Number,default: 0,},
+    calories: { type: Number, required: true }
 });
 
 
