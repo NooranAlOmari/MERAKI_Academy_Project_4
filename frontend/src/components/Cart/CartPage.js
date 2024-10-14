@@ -1,12 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../../App';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import CartSummary from './CartSummary';
 
 import './cartpage.css';
 
 const CartPage = () => {
-    const { token } = useContext(AppContext);
+    const navigate = useNavigate();
+    const { token } = useContext(AppContext); 
     const [error, setError] = useState(null);
     const { setProducts, products, setselectedproductId, cart, setupdateCart } = useContext(AppContext);
 
@@ -24,7 +26,7 @@ const CartPage = () => {
         };
 
         fetchCart();
-    }, [token, cart]);
+    }, [token]);
 
     const updateQuantity = async (productId, newQuantity) => {
         try {
@@ -56,16 +58,20 @@ const CartPage = () => {
         }
     };
 
-    const calculateTotal = () => {
-        if (cart && cart.items.length > -1) {
-            return cart.items.reduce((total, item) => {
-                return total + (item.product.price * item.quantity);
-            }, 0).toFixed(2);
+    // حساب subtotal VAT total 
+    const calculateCartSummary = () => {
+        if (cart && cart.items.length > 0) {
+            const subtotal = cart.items.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
+            const vat = subtotal * 0.05;
+            const deliveryFee = 0.00; //  رسوم توصيل
+
+            const total = subtotal + vat + deliveryFee;
+            return { subtotal, vat, deliveryFee, total };
         }
-        return 0;
+        return { subtotal: 0, vat: 0, deliveryFee: 0, total: 0 };
     };
 
-        
+    const { subtotal, vat, deliveryFee, total } = calculateCartSummary();
 
     return (
         <div className="cart-page">
@@ -93,14 +99,40 @@ const CartPage = () => {
                             </div>
                         </div>
                     ))}
+
                     <div className="cart-total">
-                        <h3>Total: <strong>${calculateTotal()}</strong></h3>
+                        <h3>Total: <strong>${total.toFixed(2)}</strong></h3>
+                    </div>
+
+                    {/*(Order Summary) */}
+                    <div className="order-summary">
+                        <h3>Order Summary</h3>
+                        <div className="summary-item">
+                            <span>Subtotal</span>
+                            <span>${subtotal.toFixed(2)}</span>
+                        </div>
+                        <div className="summary-item">
+                            <span>Delivery Fee</span>
+                            <span>{deliveryFee === 0 ? 'Free' : `$${deliveryFee.toFixed(2)}`}</span>
+                        </div>
+                        <div className="summary-item vat">
+                            <span>VAT (5%)</span>
+                            <span>${vat.toFixed(2)}</span>
+                        </div>
+                        <div className="summary-item total">
+                            <span>Total</span>
+                            <span>${total.toFixed(2)}</span>
+                        </div>
+
+                        <div className="buttons-container">
+                            <button onClick={() => navigate('/shop')}>Add More</button>
+                            <button onClick={() => navigate('/checkout')}>Proceed to Checkout</button>
+                        </div>
                     </div>
                 </div>
             ) : (
                 <p>Your cart is empty.</p>
             )}
-            <CartSummary/>
         </div>
     );
 };
