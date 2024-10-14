@@ -100,35 +100,32 @@ const CartPage = () => {
                         </div>
                     ))}
 
-                    <div className="cart-total">
-                        <h3>Total: <strong>${total.toFixed(2)}</strong></h3>
-                    </div>
+                    
 
                     {/*(Order Summary) */}
-                    <div className="order-summary">
-                        <h3>Order Summary</h3>
-                        <div className="summary-item">
-                            <span>Subtotal</span>
-                            <span>${subtotal.toFixed(2)}</span>
-                        </div>
-                        <div className="summary-item">
-                            <span>Delivery Fee</span>
-                            <span>{deliveryFee === 0 ? 'Free' : `$${deliveryFee.toFixed(2)}`}</span>
-                        </div>
-                        <div className="summary-item vat">
-                            <span>VAT (5%)</span>
-                            <span>${vat.toFixed(2)}</span>
-                        </div>
-                        <div className="summary-item total">
-                            <span>Total</span>
-                            <span>${total.toFixed(2)}</span>
-                        </div>
-
-                        <div className="buttons-container">
-                            <button onClick={() => navigate('/shop')}>Add More</button>
-                            <button onClick={() => navigate('/checkout')}>Proceed to Checkout</button>
-                        </div>
-                    </div>
+                    <div className="order-summary" >
+    <h3 > Cart Summary</h3>
+    <div className="summary-item" >
+        <span>Subtotal</span>
+        <span>${subtotal.toFixed(2)}</span>
+    </div>
+    <div className="summary-item" >
+        <span>Delivery Free</span>
+        <span>{deliveryFee === 0 ? 'Free' : `$${deliveryFee.toFixed(2)}`}</span>
+    </div>
+    <div className="summary-item vat" >
+        <span>VAT (5%)</span>
+        <span>${vat.toFixed(2)}</span>
+    </div>
+    <div className="summary-item total" >
+        <span >Total</span>
+        <span >${total.toFixed(2)}</span>
+    </div>
+    <div className="buttons-container" >
+        <button onClick={() => navigate(-1)} className="button-cart">Add More</button>
+        <button onClick={() => navigate('/checkout')} className="button-cart">Proceed to Checkout</button>
+    </div>
+</div>
                 </div>
             ) : (
                 <p>Your cart is empty.</p>
@@ -138,3 +135,8 @@ const CartPage = () => {
 };
 
 export default CartPage;
+
+
+/**<div className="cart-total">
+                        <h3>Total: <strong>${total.toFixed(2)}</strong></h3>
+                    </div> */
