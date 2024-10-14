@@ -7,10 +7,12 @@ const Cart = ({ productId, productName, productPrice, quantity, setQuantity }) =
     const navigate = useNavigate();
     const { token, setupdateCart } = useContext(AppContext);
 
+
     const handleAddToCart = () => {
         const storedToken = localStorage.getItem('token') || token;
-
-        if (!storedToken) {
+        
+        console.log(storedToken)
+        if (!storedToken || storedToken === "undefined" || storedToken === null ) {
             alert('You need to be logged in to add items to the cart.');
             navigate('/AuthPage');
             return;
@@ -27,7 +29,7 @@ const Cart = ({ productId, productName, productPrice, quantity, setQuantity }) =
             }
         })
         .catch((err) => {
-            console.error('Error adding product to cart:', err);
+            console.log('Error adding product to cart:', err);
         });
     };
 
@@ -37,8 +39,9 @@ const Cart = ({ productId, productName, productPrice, quantity, setQuantity }) =
         <div className="cart-component">
 
             <button onClick={handleAddToCart}>Add to Cart</button>
+            
         </div>
     );
 };
 
-export default Cart;
+export default Cart

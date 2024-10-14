@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';  
 import axios from 'axios';
 import Cart from '../Cart/Cart';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 import './productDetails.css'
 
 const ProductDetails = () => {
+    const navigate = useNavigate();
+
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);  
     const { productId } = useParams();  
+    
 
     useEffect(() => {
         if (productId) {
@@ -27,15 +35,25 @@ const ProductDetails = () => {
     const totalPrice = product ? (product.price * quantity).toFixed(2) : 0;
 
 
+    const handleBackClick = () => {
+        navigate(-1); 
+    };
+
     return (
         <div className="product-details">
             {product ? (
+                
                 <div className="product-info">
-                <div className="image-container">
-                    <img src={product.image} alt={product.name} className="product-details-image rotating-image" />
-                </div>
+                    {/* Back*/}
+                    <button className="view-menu-btn" onClick={handleBackClick}>
+                        <FontAwesomeIcon icon={faArrowLeft} />
+                    </button>
+                    <div className="image-container">
+                        <img src={product.image} alt={product.name} className="product-details-image rotating-image" />
+                    </div>
 
                     <div className="details-container">
+
                         <h2 className="product-name">{product.name}</h2>
                         <p className="product-description">{product.description}</p>
                         <p className="product-price">Price per unit: ${product.price}</p>
@@ -65,7 +83,13 @@ const ProductDetails = () => {
             ) : (
                 <p className="loading-message">Loading product details...</p>
             )}
+
+             {/* View Menu Button */}
+             <button className="view-menu-btn" onClick={handleBackClick}>
+                        <span className="arrow-icon">←</span> View Menu
+                    </button>
         </div>
+
     );
 };
 

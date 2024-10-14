@@ -14,7 +14,7 @@ function Home() {
         </video>
 
         <div className="header-content">
-          <h1>What will you cook today?</h1>
+          <h1>What will you eat today?</h1>
           <div className="search-bar">
               <input id="searchInput" placeholder="Search for a recipe..." />
               <button id="searchButton">Search</button>

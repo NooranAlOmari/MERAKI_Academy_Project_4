@@ -5,8 +5,8 @@
     min-height: 100vh;
     background: linear-gradient(to right, #f6f6f6, #e0e0e0);
     padding: 50px;
-    margin-top: 300px; /* navbarمسافة عشان تنزل لتحت */
-    margin-bottom: -45px; /*عشان الخلفة السكني تغطي لانه في مارجن للفوتر فوقه فبصير ابيض*/
+    margin-top: 220px; /* navbarمسافة عشان تنزل لتحت */
+    margin-bottom: -95px; /*عشان الخلفة السكني تغطي لانه في مارجن للفوتر فوقه فبصير ابيض*/
 }
 
 .product-info {
@@ -34,8 +34,8 @@
 }
 
 .product-details-image {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     border: 5px solid #ff6f61;
     object-fit: cover;
@@ -122,6 +122,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease; 
     text-align: center; 
+    /*margin-top: -20px;/************************/
 }
 
 
@@ -200,10 +201,11 @@
 }
 
 .rotating-image {
-    width: 250px; 
-    height: 250px; 
+    width: 300px; 
+    height: 300px; 
     border-radius: 50%; 
     animation: rotate 39s linear infinite; /*Rotation time*/
+    margin-top: 40px;
 }
 
 /* Animation keyframes for rotation */
@@ -214,5 +216,53 @@
     100% {
         transform: rotate(360deg); /* النهاية */
     }
+}
+/***********************************/
+/*********************************/
+/*.total-price {
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    color: #4CAF50; 
+    margin-top: 15px; 
+    padding: 10px; 
+    background-color: #f9f9f9;
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+}*/
+/*.total-price {
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    color: #333; 
+    margin-top: 15px; 
+    padding: 12px 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+    transition: transform 0.3s ease;
+}*/
+
+.total-price:hover {
+    transform: scale(1.02); 
+}
+/****************************************/
+/***************************************/
+.view-menu-btn {
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    background: none;
+    border: none; 
+    cursor: pointer; 
+    padding: 0; 
+}
+
+.view-menu-btn:hover {
+    opacity: 0.7;
+}
+
+.view-menu-btn .fa-arrow-left {
+    font-size: 24px; 
+    color: #ff4b2b; 
 }
 
