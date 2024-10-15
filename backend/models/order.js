@@ -27,7 +27,7 @@ const mongoose = require("mongoose");
    
     /* */ paymentMethod: {
         type: String,
-        enum: ['paypal', 'credit_card', 'bank_transfer'],
+        enum: ['paypal', 'credit_card', 'Cash'],
         required: true
     },
 
@@ -72,7 +72,8 @@ const mongoose = require("mongoose");
 
     deliveredAt: {
         type: Date,
-    }
+    },
+    note:{ type: String }
     
 });
 //shippingAddress, paymentMethod

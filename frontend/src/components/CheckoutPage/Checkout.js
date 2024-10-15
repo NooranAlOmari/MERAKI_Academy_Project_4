@@ -18,7 +18,7 @@ const CheckoutPage = () => {
     });
 
     const [paymentMethod, setPaymentMethod] = useState('');
-    const [notes, setNotes] = useState(''); 
+    const [note, setNotes] = useState(''); 
     const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
@@ -28,7 +28,7 @@ const CheckoutPage = () => {
             const response = await axios.post('http://localhost:5000/orders', {
                 shippingAddress,
                 paymentMethod,
-                notes // Add notes to the application
+                note 
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             });

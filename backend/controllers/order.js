@@ -5,7 +5,7 @@ const cartModel = require('../models/cart');
 //Create a new Orde
 const createOrder = async (req, res) => {
     const userId = req.token.userId
-    const { shippingAddress, paymentMethod } = req.body
+    const { shippingAddress, paymentMethod, note } = req.body
     try {
         const cart = await cartModel.findOne({ user: userId }).populate('items.product')
         
@@ -20,7 +20,8 @@ const createOrder = async (req, res) => {
             totalAmount: totalAmount,
             status: 'Pending',
             shippingAddress: shippingAddress,
-            paymentMethod: paymentMethod
+            paymentMethod: paymentMethod,
+            note: note
         });
 
         await newOrder.save();

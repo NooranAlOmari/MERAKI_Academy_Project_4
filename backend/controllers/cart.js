@@ -87,7 +87,7 @@ const removeFromCart = async (req, res) => {
         cart.items = cart.items.filter(item => !item.product.equals(product))
         await cart.save();
 
-        res.status(200).json({ success: true, cart });
+        res.status(200).json({ success: true, cart, deleted:product});/****/
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
