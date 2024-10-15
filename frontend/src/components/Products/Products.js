@@ -60,7 +60,32 @@ console.log(categoryId )
     }
 };
 
-console.log('Cart items:', cart)
+/******************************/
+/***Change video by category***/
+let videoSrc = '';
+if (categoryId === '670742a13bced54c5a10bfa9') {
+    videoSrc = '/home-video.mp4';  
+} else if (categoryId === '6707455a3bced54c5a10bfaf') {
+    videoSrc = '/12345678.mp4';  
+} else if (categoryId === '6707455a3bced54c5a10bfaf') {
+    videoSrc = '/12345678.mp4';  
+} else if (categoryId === '6707455a3bced54c5a10bfaf') {
+    videoSrc = '/12345678.mp4';  
+} else if (categoryId === '6707455a3bced54c5a10bfaf') {
+    videoSrc = '/12345678.mp4';  
+} else if (categoryId === '6707455a3bced54c5a10bfaf') {
+    videoSrc = '/12345678.mp4';  
+} else if (categoryId === '6707455a3bced54c5a10bfaf') {
+    videoSrc = '/12345678.mp4';  
+} else if (categoryId === '6707455a3bced54c5a10bfaf') {
+    videoSrc = '/12345678.mp4';  
+} else {
+    videoSrc = '/12345678.mp4';  
+}
+/******************************/
+/******************************/
+
+
 return (
     <section className="The-section">
         <section className="upper-section">
@@ -71,7 +96,7 @@ return (
             </div>
             <div className="hero-video">
                 <video autoPlay muted loop>
-                    <source src="tttttttttttttttttttt.mp4" type="video/mp4" />
+                    <source src={videoSrc} type="video/mp4" />
                 </video>
             </div>
         </section>
@@ -118,12 +143,11 @@ return (
 );
 };
 
-
 export default Products;
 
 
 
-/*<p className="timee">
-<MdLocalFireDepartment style={{ color: 'red', marginRight: '5px' }} />
-{product.calories} calories
-</p>*/
+/*<p className="timee">*/
+/*<MdLocalFireDepartment style={{ color: 'red', marginRight: '5px' }} />*/
+/*{product.calories} calories*/
+/*</p>*/
