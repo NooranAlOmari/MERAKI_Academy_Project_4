@@ -16,6 +16,7 @@ import CartPage from './components/Cart/CartPage';
 import Footer from './components/Footer/Footer';
 import Favorites from './components/Favoritess/Favoritess';
 import CheckoutPage from './components/CheckoutPage/Checkout';
+import OrderConfirmation from './components/Orders/OrderConfirmation';
 export const AppContext = createContext();
 const App = () => {
   
@@ -65,7 +66,6 @@ const App = () => {
                 draggable 
                 pauseOnHover 
             />
-    <button onClick={() => toast.success('Test Toast!')}>Test Toast</button>
 
     <div className="App">
     <header className="App-header">
@@ -85,8 +85,9 @@ const App = () => {
     <Route path="/Favorites" element={<Favorites />} />
     <Route path="/products/search" element={<Products/>} />
     <Route path="/checkout" element={<CheckoutPage/>} />
-    </Routes>
     
+    <Route path="/order/:id" element={<OrderConfirmation />} />
+    </Routes>
     <Footer/>
 
 </AppContext.Provider>

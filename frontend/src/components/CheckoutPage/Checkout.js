@@ -21,6 +21,8 @@ const CheckoutPage = () => {
     const [note, setNotes] = useState(''); 
     const [error, setError] = useState(null);
 
+
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
     
