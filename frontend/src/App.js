@@ -13,6 +13,7 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import CartPage from './components/Cart/CartPage';
 import Footer from './components/Footer/Footer';
 import Favorites from './components/Favoritess/Favoritess';
+import CheckoutPage from './components/CheckoutPage/Checkout';
 
 export const AppContext = createContext();
 const App = () => {
@@ -70,7 +71,7 @@ const App = () => {
     <Route path="/Favorites" element={<Favorites />} />
     <Route path="/order" element={<order/>} />
     <Route path="/products/search" element={<Products/>} />
-
+    <Route path="/checkout" element={<CheckoutPage/>} />
     </Routes>
     
     <Footer/>
@@ -80,7 +81,7 @@ const App = () => {
 
   )
 }
-////AuthPage  
+// /AuthPage  // /products/search // /checkout
 
 
 
