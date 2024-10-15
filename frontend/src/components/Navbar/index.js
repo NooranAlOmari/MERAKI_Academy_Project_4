@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './navbar.css'; 
+import { AppContext } from '../../App'; 
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { cart } = useContext(AppContext); 
+
+  // ********optional chaining*********
+  const totalItems = cart?.items?.reduce((acc, item) => acc + item.quantity, 0) || 0;
 
   return (
-    
     <nav className="navbar">
       <div className="navbar-item" onClick={() => navigate('/')}>
         <i className="fas fa-home"></i> Home
@@ -20,11 +24,17 @@ const Navbar = () => {
       <div className="navbar-item">
         <i className="fas fa-box"></i> My Orders
       </div>
-      <div className="navbar-item">
-        <i className="fas fa-search" onClick={() => navigate('/Favorites')}></i> Search
+      <div className="navbar-item" onClick={() => navigate('/Favorites')}>
+        <i className="fas fa-heart"></i> Favorites
+      </div>
+      <div className="navbar-item" onClick={() => navigate('/cart')}>
+        <i className="fas fa-shopping-cart"></i> Cart
+        <span className="cart-count">{totalItems > 0 ? totalItems : 0}</span> 
       </div>
     </nav>
   );
 };
 
 export default Navbar;
+
+//important to add optional chaining=> //cart?.items? &  // totalItems : 0

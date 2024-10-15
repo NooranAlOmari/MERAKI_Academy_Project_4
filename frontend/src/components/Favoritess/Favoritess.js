@@ -10,7 +10,7 @@ const Favorites = () => {
         return <p>No favorites added yet.</p>;
     }
 
-    // Check if there are products
+    // if there are products
     if (!products || products.length === 0) {
         return <p>No products available.</p>;
     }
