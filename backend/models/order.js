@@ -27,7 +27,7 @@ const mongoose = require("mongoose");
    
     /* */ paymentMethod: {
         type: String,
-        enum: ['paypal', 'credit_card', 'Cash'],
+        enum: ['paypal', 'Credit Card', 'Cash'],
         required: true
     },
 

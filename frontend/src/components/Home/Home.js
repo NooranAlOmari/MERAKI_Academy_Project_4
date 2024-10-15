@@ -50,7 +50,6 @@ function Home() {
     
   return (
     <>
-        <ToastContainer />
 
       <header className="home-header">
 

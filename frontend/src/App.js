@@ -1,20 +1,21 @@
-import React from 'react'
+import React, { useState, createContext } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css';  
+
 import "./App.css";
-import { useState, createContext } from "react";
-import { Link, Route, Routes, useNavigate, useParams } from "react-router-dom";
 
 import AdminPanel from './components/AdminPanel/AdminPanel';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
-import Home from './components/Home/Home'
+import Home from './components/Home/Home';
 import AuthPage from './components/AuthPage/AuthPage';
-import Products from './components//Products/Products';
+import Products from './components/Products/Products';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import CartPage from './components/Cart/CartPage';
 import Footer from './components/Footer/Footer';
 import Favorites from './components/Favoritess/Favoritess';
 import CheckoutPage from './components/CheckoutPage/Checkout';
-
 export const AppContext = createContext();
 const App = () => {
   
@@ -52,7 +53,20 @@ const App = () => {
     }}>
     
     <Navbar/>
-    
+
+    <ToastContainer 
+                position="top-right" 
+                autoClose={3000} // Auto shutdown time (3 seconds)
+                hideProgressBar={false} 
+                newestOnTop={false} 
+                closeOnClick 
+                rtl={false} 
+                pauseOnFocusLoss 
+                draggable 
+                pauseOnHover 
+            />
+    <button onClick={() => toast.success('Test Toast!')}>Test Toast</button>
+
     <div className="App">
     <header className="App-header">
     </header>
@@ -69,7 +83,6 @@ const App = () => {
     <Route path="/products/details/:productId" element={<ProductDetails />} />
     <Route path="/cart" element={<CartPage />} />
     <Route path="/Favorites" element={<Favorites />} />
-    <Route path="/order" element={<order/>} />
     <Route path="/products/search" element={<Products/>} />
     <Route path="/checkout" element={<CheckoutPage/>} />
     </Routes>

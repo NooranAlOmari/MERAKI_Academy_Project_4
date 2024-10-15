@@ -7,7 +7,7 @@ import './CheckoutPage.css';
 
 const CheckoutPage = () => {
     const navigate = useNavigate();
-    const { token } = useContext(AppContext);
+    const { token,cart  } = useContext(AppContext);
     
     const [shippingAddress, setShippingAddress] = useState({
         fullAddress: '',
@@ -23,24 +23,32 @@ const CheckoutPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
+        /***/const orderItems = cart.map(item => ({
+            product: item.product._id, 
+            quantity: item.quantity, 
+            price: item.product.price 
+        }));
+    
         try {
             const response = await axios.post('http://localhost:5000/orders', {
                 shippingAddress,
                 paymentMethod,
-                note 
+                note,
+                orderItems:orderItems /***/
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-
+    
             if (response.data.success) {
-                navigate(`/order/${response.data.order._id}`); // Go to order details page
+                navigate(`/order/${response.data.order._id}`); 
             }
         } catch (err) {
             console.error('Error creating order:', err);
             setError('Failed to create the order.');
         }
     };
+    
 
     return (
         <div className="checkout-container">
@@ -102,8 +110,8 @@ const CheckoutPage = () => {
                     <label className="payment-option">
                         <input 
                             type="radio" 
-                            value="cash" 
-                            checked={paymentMethod === 'cash'} 
+                            value="Cash" 
+                            checked={paymentMethod === 'Cash'} 
                             onChange={(e) => setPaymentMethod(e.target.value)} 
                         />
                         <FaMoneyBillAlt /> Cash
