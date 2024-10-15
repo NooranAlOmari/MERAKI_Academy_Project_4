@@ -9,6 +9,7 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
     margin-top: 620px;
+
 }
 
 
@@ -172,11 +173,11 @@
 }
 
 .button-cart:hover {
-    background-color: #ff6b6b;
+    background-color: hwb(0 34% 0%);
     transform: scale(1.05);
 }
 
 .button-cart:active {
     background-color: #c12c24;
-    transform: scale(0.95); 
+    transform: scale(0.95);
 }

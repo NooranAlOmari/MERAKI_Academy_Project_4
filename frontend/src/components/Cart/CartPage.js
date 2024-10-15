@@ -26,7 +26,7 @@ const CartPage = () => {
         };
 
         fetchCart();
-    }, [token]);
+    }, [token,cart]);// *******cart very very very important******
 
     const updateQuantity = async (productId, newQuantity) => {
         try {
@@ -63,7 +63,7 @@ const CartPage = () => {
         if (cart && cart.items.length > 0) {
             const subtotal = cart.items.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
             const vat = subtotal * 0.05;
-            const deliveryFee = 0.00; //  رسوم توصيل
+            const deliveryFee = 0.00; //رسوم توصيل
 
             const total = subtotal + vat + deliveryFee;
             return { subtotal, vat, deliveryFee, total };
@@ -93,7 +93,7 @@ const CartPage = () => {
                                     <button onClick={() => updateQuantity(item.product._id, item.quantity + 1)}>+</button>
                                 </div>
                                 <button onClick={() => removeProduct(item.product._id)} className="remove-button">
-                                  <i className="fas fa-trash"></i> {/* أيقونة الحذف */}
+                                <i className="fas fa-trash"></i> {/* Delete icon*/}
                                 </button>
                                 <p>Total Price: <strong>${(item.product.price * item.quantity).toFixed(2)}</strong></p>
                             </div>
@@ -102,30 +102,30 @@ const CartPage = () => {
 
                     
 
-                    {/*(Order Summary) */}
-                    <div className="order-summary" >
-    <h3 > Cart Summary</h3>
-    <div className="summary-item" >
-        <span>Subtotal</span>
-        <span>${subtotal.toFixed(2)}</span>
-    </div>
-    <div className="summary-item" >
-        <span>Delivery Free</span>
-        <span>{deliveryFee === 0 ? 'Free' : `$${deliveryFee.toFixed(2)}`}</span>
-    </div>
-    <div className="summary-item vat" >
-        <span>VAT (5%)</span>
-        <span>${vat.toFixed(2)}</span>
-    </div>
-    <div className="summary-item total" >
-        <span >Total</span>
-        <span >${total.toFixed(2)}</span>
-    </div>
-    <div className="buttons-container" >
-        <button onClick={() => navigate(-1)} className="button-cart">Add More</button>
-        <button onClick={() => navigate('/checkout')} className="button-cart">Proceed to Checkout</button>
-    </div>
-</div>
+                        {/*(Order Summary) */}
+            <div className="order-summary" >
+                        <h3 > Cart Summary</h3>
+                        <div className="summary-item" >
+                        <span>Subtotal</span>
+                        <span>${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div className="summary-item" >
+                        <span>Delivery Free</span>
+                        <span>{deliveryFee === 0 ? 'Free' : `$${deliveryFee.toFixed(2)}`}</span>
+                    </div>
+                    <div className="summary-item vat" >
+                        <span>VAT (5%)</span>
+                        <span>${vat.toFixed(2)}</span>
+                    </div>
+                    <div className="summary-item total" >
+                        <span >Total</span>
+                        <span >${total.toFixed(2)}</span>
+                    </div>
+                    <div className="buttons-container" >
+                        <button onClick={() => navigate(-1)} className="button-">Add More</button>
+                        <button onClick={() => navigate('/checkout')} >Proceed to Checkout</button>
+                    </div>
+                </div>
                 </div>
             ) : (
                 <p>Your cart is empty.</p>
