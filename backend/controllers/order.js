@@ -61,18 +61,28 @@ const getOrderById = async (req, res) => {
             return res.status(404).json({ success: false, message: 'Order not found' });
         }
 
-        res.status(200).json({ success: true, order });
+        res.status(200).json({ success: true, order:order });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
 };
 
 
+const getAllOrders = async (req, res) => {
+    try {
+        const orders = await orderModel.find()
+            .populate('orderItems.product'); // Populate product field
+        res.json({ success: true, orders:orders });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
 
 module.exports = { 
     createOrder,
     getUserOrders,
-    getOrderById
+    getOrderById,
+    getAllOrders
     }
 
 /**

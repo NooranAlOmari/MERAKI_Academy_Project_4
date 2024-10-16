@@ -53,7 +53,7 @@ const CheckoutPage = () => {
     
 
     return (
-        <div className="checkout-container">
+        <div className="checkout-container cart-page slide-up-animation">
             <div className="checkout-header">
                 <h1>Checkout</h1>
                 {error && <p className="error-message">{error}</p>}

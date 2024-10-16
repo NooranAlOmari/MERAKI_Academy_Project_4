@@ -86,7 +86,7 @@ const CartPage = () => {
 
     return (
         <div className="cart-page slide-up-animation">
-            <h1>Your Cart</h1>
+            <h1 className='YourCart'>Your Cart</h1>
             {error && <p className="error-message">{error}</p>}
             {Array.isArray(cart) && cart.length > 0 ? (
                 <div className="cart-items">
