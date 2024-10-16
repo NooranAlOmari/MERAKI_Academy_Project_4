@@ -14,7 +14,7 @@
     position: relative;
     margin-top: 694px; /*navbarمسافة من فوق عشان */
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
-    margin-top: 450px;
+    margin-top: 650px
 }
 .cart-page::before {
     content: '';

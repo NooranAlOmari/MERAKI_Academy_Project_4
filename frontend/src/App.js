@@ -18,6 +18,7 @@ import Favorites from './components/Favoritess/Favoritess';
 import CheckoutPage from './components/CheckoutPage/Checkout';
 import OrderConfirmation from './components/Orders/OrderConfirmation';
 import UserOrders from './components/Orders/userorders';
+import OrderManage from './components/AdminPanel/OrderManage/OrderManage';
 export const AppContext = createContext();
 const App = () => {
   
@@ -91,6 +92,7 @@ const App = () => {
     
     <Route path="/order/:id" element={<OrderConfirmation />} />
     <Route path="/my-orders" element={<UserOrders />} />
+    <Route path="/orders/admin" element={<OrderManage />} />
 
     </Routes>
 

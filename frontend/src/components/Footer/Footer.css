@@ -14,6 +14,8 @@
     color: #fff;
     position: relative;
     margin-top: 50px;/****عشان تبعد العناصر تبعت الصفحات عنه*****/
+    bottom: 0;
+    
 }
 
 .footer-section h3 {

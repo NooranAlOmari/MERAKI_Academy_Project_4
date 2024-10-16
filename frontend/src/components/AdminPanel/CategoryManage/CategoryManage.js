@@ -2,7 +2,6 @@ import React, {useContext,useEffect,useState} from 'react'
 import {AppContext} from '../../../App'
 import {useNavigate } from "react-router-dom";
 import axios from "axios"
-//import './CategoryManage.css';
 import Category from '../../Category/Category';
 
 function CategoryManage() {
@@ -41,7 +40,7 @@ function CategoryManage() {
         
 return (
 <>
-        <div className="add-category-form">
+        <div className="add-category-form slide-up-animation">
             <button onClick={() => setShowInputs(!showInputs)}>
                 {showInputs ? 'Cancel' : 'Add New Category'} 
             </button>
@@ -77,7 +76,7 @@ return (
 
             {message && <div className="message">{message}</div>}
         </div>
-                                                          
+
 
 </>        
     );

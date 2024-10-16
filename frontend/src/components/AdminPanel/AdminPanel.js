@@ -15,38 +15,51 @@ const AdminPanel = () => {
     };
 
     return (
-        <div className="admin-panel">
+        <div className="admin-panel slide-up-animation">
             <h1>Admin Panel</h1>
 
             <div className="dropdown">
                 <h2 onClick={() => handleComponentToggle('UserManage')} className="dropdown-header">
                     User Management
                 </h2>
-                {activeComponent === 'UserManage' && <UserManage />}
+                <div className={`manage-component ${activeComponent === 'UserManage' ? 'active' : ''}`}>
+                    <UserManage />
+                </div>
 
                 <h2 onClick={() => handleComponentToggle('CategoryManage')} className="dropdown-header">
                     Category Management
                 </h2>
-                {activeComponent === 'CategoryManage' && <CategoryManage />}
+                <div className={`manage-component ${activeComponent === 'CategoryManage' ? 'active' : ''}`}>
+                    <CategoryManage />
+                </div>
 
                 <h2 onClick={() => handleComponentToggle('ProductManage')} className="dropdown-header">
                     Product Management
                 </h2>
-                {activeComponent === 'ProductManage' && <ProductManage />}
+                <div className={`manage-component ${activeComponent === 'ProductManage' ? 'active' : ''}`}>
+                    <ProductManage />
+                </div>
 
                 <h2 onClick={() => handleComponentToggle('OrderManage')} className="dropdown-header">
                     Order Management
                 </h2>
-                {activeComponent === 'OrderManage' && <OrderManage />}
+                <div className={`manage-component ${activeComponent === 'OrderManage' ? 'active' : ''}`}>
+                    <OrderManage />
+                </div>
 
                 <h2 onClick={() => handleComponentToggle('ReviewManage')} className="dropdown-header">
                     Review Management
                 </h2>
-                {activeComponent === 'ReviewManage' && <ReviewManage />}
+                <div className={`manage-component ${activeComponent === 'ReviewManage' ? 'active' : ''}`}>
+                    <ReviewManage />
+                </div>
             </div>
         </div>
     );
 };
+
+
+
 
 export default AdminPanel;
 

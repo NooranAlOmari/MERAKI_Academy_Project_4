@@ -10,12 +10,13 @@ import {
     TableContainer,
     TableHead,
     TableRow,
-    Button,
-    Collapse,
     IconButton,
+    Collapse,
     Snackbar,
+    Paper,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import './OrderManage.css';
 
 function OrderManage() {
     const [orders, setOrders] = useState([]);
@@ -27,11 +28,11 @@ function OrderManage() {
     const fetchOrders = async () => {
         try {
             const response = await axios.get('http://localhost:5000/orders/admin', {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${token}` },
             });
 
             if (response.data.success) {
-                setOrders(response.data.orders || []); 
+                setOrders(response.data.orders || []);
             } else {
                 setMessage('Failed to fetch orders.');
                 setOpenSnackbar(true);
@@ -46,17 +47,19 @@ function OrderManage() {
         fetchOrders();
     }, []);
 
+    // Expand or collapse order details
     const handleExpandClick = (orderId) => {
         setExpandedOrderId(expandedOrderId === orderId ? null : orderId);
     };
 
+    // Close the snackbar
     const handleCloseSnackbar = () => {
         setOpenSnackbar(false);
     };
 
     return (
-        <Box sx={{ padding: 2 }}>
-            <Typography variant="h4" gutterBottom>
+        <Box className="order-manage slide-up-animation" sx={{ padding: 2 }}>
+            <Typography variant="h4" gutterBottom className="manage-title">
                 Manage Orders
             </Typography>
             <Snackbar
@@ -65,60 +68,76 @@ function OrderManage() {
                 onClose={handleCloseSnackbar}
                 message={message}
             />
-            <TableContainer>
-                <Table>
-                    <TableHead>
+            <TableContainer component={Paper} className="order-table-container">
+                <Table className="order-table">
+                    <TableHead className="table-header">
                         <TableRow>
                             <TableCell>Order ID</TableCell>
+                            <TableCell>Order Date</TableCell>
                             <TableCell>Shipping Address</TableCell>
+                            <TableCell>Phone Number</TableCell>
                             <TableCell>Total Amount</TableCell>
                             <TableCell>Payment Method</TableCell>
-                            <TableCell>Actions</TableCell>
+                            <TableCell>Details</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {Array.isArray(orders) && orders.length > 0 ? (
-                            orders.map(order => (
-                                <React.Fragment key={order._id}>
-                                    <TableRow>
-                                        <TableCell>{order._id}</TableCell>
-                                        <TableCell>{order.shippingAddress ? order.shippingAddress.fullAddress : 'N/A'}</TableCell>
-                                        <TableCell>{order.totalAmount ? order.totalAmount.toFixed(2) : 'N/A'}</TableCell>
-                                        <TableCell>{order.paymentMethod}</TableCell>
-                                        <TableCell>
-                                            <IconButton onClick={() => handleExpandClick(order._id)}>
-                                                <ExpandMoreIcon />
-                                            </IconButton>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell colSpan={5}>
-                                            <Collapse in={expandedOrderId === order._id} timeout="auto" unmountOnExit>
-                                                <Box sx={{ margin: 1 }}>
-                                                    <Typography variant="h6">Order Items</Typography>
-                                                    <Table size="small">
-                                                        <TableBody>
-                                                            {order.orderItems.map(item => (
-                                                                <TableRow key={item._id}>
-                                                                    <TableCell>Product ID: {item.product ? item.product._id : 'N/A'}</TableCell>
-                                                                    <TableCell>Quantity: {item.quantity}</TableCell>
-                                                                    <TableCell>Price: ${item.price.toFixed(2)}</TableCell>
-                                                                </TableRow>
-                                                            ))}
-                                                        </TableBody>
-                                                    </Table>
-                                                </Box>
-                                            </Collapse>
-                                        </TableCell>
-                                    </TableRow>
-                                </React.Fragment>
-                            ))
-                        ) : (
-                            <TableRow>
-                                <TableCell colSpan={5}>No orders found.</TableCell>
-                            </TableRow>
-                        )}
-                    </TableBody>
+    {Array.isArray(orders) && orders.length > 0 ? (
+        orders.map((order) => (
+            <React.Fragment key={order._id}>
+                <TableRow className="table-row">
+                    <TableCell>{order._id}</TableCell>
+                    <TableCell>{new Date(order.createdAt).toLocaleDateString()}</TableCell>
+                    <TableCell>{order.shippingAddress ? order.shippingAddress.fullAddress : 'N/A'}</TableCell>
+                    <TableCell>{order.shippingAddress ? order.shippingAddress.state : 'N/A'}</TableCell>
+                    <TableCell>{order.totalAmount ? order.totalAmount.toFixed(2) : 'N/A'}</TableCell>
+                    <TableCell>{order.paymentMethod}</TableCell>
+                    <TableCell>
+                        <IconButton onClick={() => handleExpandClick(order._id)} className="expand-button">
+                            <ExpandMoreIcon />
+                        </IconButton>
+                    </TableCell>
+                </TableRow>
+                {/* details*/}
+                <TableRow>
+                    <TableCell colSpan={7}>
+                        <Collapse in={expandedOrderId === order._id} timeout="auto" unmountOnExit>
+                            <Box sx={{ margin: 1 }}>
+                                <Typography variant="h6">Order Items</Typography>
+                                <Table size="small">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Product ID</TableCell>
+                                            <TableCell>Product Name</TableCell>
+                                            <TableCell>Quantity</TableCell>
+                                            <TableCell>Price</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {order.orderItems.map((item) => (
+                                            <TableRow key={item._id}>
+                                                <TableCell>{item.product ? item.product._id : 'N/A'}</TableCell>
+                                                <TableCell>{item.product ? item.product.name : 'Product not found'}</TableCell>
+                                                <TableCell>{item.quantity}</TableCell>
+                                                <TableCell>${item.price.toFixed(2)}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </Box>
+                        </Collapse>
+                    </TableCell>
+                </TableRow>
+            </React.Fragment>
+        ))
+    ) : (
+        <TableRow>
+            <TableCell colSpan={7} className="no-orders">
+                No orders found.
+            </TableCell>
+        </TableRow>
+    )}
+</TableBody>
                 </Table>
             </TableContainer>
         </Box>
