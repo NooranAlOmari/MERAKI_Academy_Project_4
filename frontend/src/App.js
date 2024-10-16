@@ -55,17 +55,19 @@ const App = () => {
     
     <Navbar/>
 
-    <ToastContainer 
-                position="top-right" 
-                autoClose={3000} // Auto shutdown time (3 seconds)
-                hideProgressBar={false} 
-                newestOnTop={false} 
-                closeOnClick 
-                rtl={false} 
-                pauseOnFocusLoss 
-                draggable 
-                pauseOnHover 
-            />
+    <ToastContainer
+    position="top-right"
+    autoClose={3000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    style={{ top: '50px' }}
+/>
+
 
     <div className="App">
     <header className="App-header">

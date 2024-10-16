@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { AppContext } from '../../App';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import './OrderConfirmation.css'
 const OrderConfirmation = () => {
     const { token } = useContext(AppContext);
     const { id: orderId } = useParams(); // orderId من الرابط
@@ -39,17 +39,29 @@ const OrderConfirmation = () => {
     return (
         <div className="order-confirmation-container">
             <h1>Your order has been received!</h1>
-            <video width="600" autoPlay loop muted>
-                <source src="path_to_your_video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+            <div className="video-container">
+    <video width="600" autoPlay loop muted>
+        <source src="/tawseel.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+</div>
             <p>Be ready! our representative will contact you soon!</p>
             <h2>Order Details:</h2>
-            <p>Order Number: {orderDetails._id}</p>
-            <p>Shipping Address: {orderDetails.shippingAddress.fullAddress}</p>
-            <p>Total: {orderDetails.totalAmount}</p>
-            <p>Payment Method: {orderDetails.paymentMethod}</p>
-            <button>View all previous orders</button>
+    
+            {orderDetails ? (
+                <>
+                <p>Order Number: {orderDetails._id}</p>
+
+                    <p>Shipping Address: {orderDetails.shippingAddress?.fullAddress}</p>
+                    <p>Total: {orderDetails.totalAmount}</p>
+                    <p>Payment Method: {orderDetails.paymentMethod}</p>
+                    <button>View all previous orders</button>
+                </>
+            ) : (
+                <p>Loading order details...</p>
+            )}
+    
+            {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
     );
 }
