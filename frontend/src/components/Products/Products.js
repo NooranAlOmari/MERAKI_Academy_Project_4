@@ -87,7 +87,7 @@ if (categoryId === '670742a13bced54c5a10bfa9') {
 
 
 return (
-    <section className="The-section">
+    <section className="The-section slide-up-animation">
         <section className="upper-section">
             <div className="hero-content">
                 <span className="small-text">Hungry?</span>

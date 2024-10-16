@@ -17,6 +17,7 @@ import Footer from './components/Footer/Footer';
 import Favorites from './components/Favoritess/Favoritess';
 import CheckoutPage from './components/CheckoutPage/Checkout';
 import OrderConfirmation from './components/Orders/OrderConfirmation';
+import UserOrders from './components/Orders/userorders';
 export const AppContext = createContext();
 const App = () => {
   
@@ -89,7 +90,10 @@ const App = () => {
     <Route path="/checkout" element={<CheckoutPage/>} />
     
     <Route path="/order/:id" element={<OrderConfirmation />} />
+    <Route path="/my-orders" element={<UserOrders />} />
+
     </Routes>
+
     <Footer/>
 
 </AppContext.Provider>

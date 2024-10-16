@@ -75,7 +75,7 @@ const mongoose = require("mongoose");
     },
     note:{ type: String }
     
-});
+}, { timestamps: true })/******/
 //shippingAddress, paymentMethod
 
 

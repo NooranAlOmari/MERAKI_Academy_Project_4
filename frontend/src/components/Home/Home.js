@@ -51,7 +51,7 @@ function Home() {
   return (
     <>
 
-      <header className="home-header">
+      <header className="home-header slide-up-animation">
 
         <video autoPlay muted loop className="header-background">
           <source src="/home-video.mp4" type="video/mp4" />

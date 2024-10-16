@@ -40,7 +40,7 @@ const ProductDetails = () => {
     };
 
     return (
-        <div className="product-details">
+        <div className="product-details slide-up-animation">
             {product ? (
                 
                 <div className="product-info">

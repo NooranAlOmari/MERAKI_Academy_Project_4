@@ -15,7 +15,7 @@ export default function AuthPage() {
     "container " + (type === "signUp" ? "right-panel-active" : "");
   return (
 
-    <div className="AuthPage">
+    <div className="AuthPage slide-up-animation">
       <h2>Sign in/up Form</h2>
       <div className={containerClass} id="container">
         <Register />

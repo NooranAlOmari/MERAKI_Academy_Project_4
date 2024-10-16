@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../App';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './OrderConfirmation.css'
+
+
 const OrderConfirmation = () => {
+    const navigate = useNavigate();
+
     const { token } = useContext(AppContext);
     const { id: orderId } = useParams(); // orderId من الرابط
 
@@ -55,7 +60,7 @@ const OrderConfirmation = () => {
                     <p>Shipping Address: {orderDetails.shippingAddress?.fullAddress}</p>
                     <p>Total: {orderDetails.totalAmount}</p>
                     <p>Payment Method: {orderDetails.paymentMethod}</p>
-                    <button>View all previous orders</button>
+                    <button onClick={() => navigate('/my-orders')}>View all previous orders</button>
                 </>
             ) : (
                 <p>Loading order details...</p>

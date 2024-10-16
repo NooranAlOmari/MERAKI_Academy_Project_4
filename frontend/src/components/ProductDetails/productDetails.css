@@ -113,7 +113,7 @@
 
 
 .cart-component button {
-    background-color: #ff6f61; 
+    background-color: #ff4b2b;
     color: white; 
     padding: 10px 20px; 
     font-size: 1.2rem;
@@ -160,7 +160,7 @@
 
 
 .quantity-btn {
-    background-color: #ff6f61; 
+    background-color:#ff4b2b; 
     color: white; 
     border: none; 
     width: 50px;
@@ -266,3 +266,4 @@
     color: #ff4b2b; 
 }
 
+/***************************************************/
