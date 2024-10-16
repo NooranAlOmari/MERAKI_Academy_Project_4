@@ -19,7 +19,8 @@ const createOrder = async (req, res) => {
             orderItems: cart.items,
             totalAmount: totalAmount,
             status: 'Pending',
-            shippingAddress: shippingAddress,
+            shippingAddress: {
+                ...shippingAddress},
             paymentMethod: paymentMethod,
             note: note
         });

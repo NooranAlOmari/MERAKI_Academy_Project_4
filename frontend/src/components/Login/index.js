@@ -37,8 +37,12 @@ const LogIn =()=>{
                 console.log(isAdmin)
                 setisAdmin(isAdmin)
                 localStorage.setItem('isAdmin', isAdmin);
-                navigate(isAdmin && "/adminPanel" )
                 
+                if (isAdmin) {
+                    navigate("/adminPanel");
+                } else {
+                    navigate("/");
+                }
             })
             .catch((err) => {
                 console.log(err);
