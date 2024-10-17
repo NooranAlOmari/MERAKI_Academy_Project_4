@@ -56,8 +56,8 @@ const orderSchema = new mongoose.Schema({
             required: true
         },
         coordinates: {
-            latitude: { type: Number, required: true }, // حقل خط العرض
-            longitude: { type: Number, required: true } // حقل خط الطول
+            latitude: { type: Number, required: true }, //  خط العرض
+            longitude: { type: Number, required: true } //  خط الطول
         }
     },
     paidAt: {

@@ -1,0 +1,62 @@
+.favorites-list{
+    margin: 85px 0 ;/*المسافة من فوق الكارد عشان الهيد بار ما تغطي عليهم*/
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;  /* عشان سكرول و ينعرضو يصغرو لجنب بعض*/
+    justify-content:space-around ;
+    padding:0px 50px;
+    margin-top: 770px;
+
+    
+}
+
+/*نفس خصائص الي اعطيتها للال كارد فوق*/
+.all-favorites-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px; /*الفراغ بين الكارد*/
+    background-color: #fff;
+
+}
+
+/*  عنوان صفحة الفيفوريت*/
+.favorites-list h2 {
+    font-size: 24px; 
+    color: #ff6f61; 
+    text-align: center;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    background: #fff; 
+    padding: 10px 0; /* حولين النص */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 78px 0px;/*المسافة من فوق عشان ما يغطي عالهيدر بار*/
+    z-index: 1000;
+    margin-top: 77px;
+}
+
+.messeges-favorites{
+
+    display: column; 
+    justify-content: center;
+    align-items: center;
+}
+
+/* رسالة ما في عناصر فيفوريت*/
+.no-favorites-message {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    color: #666; 
+    font-size: 18px;
+    margin: 60px 0px;
+    padding: 10px 0;
+}

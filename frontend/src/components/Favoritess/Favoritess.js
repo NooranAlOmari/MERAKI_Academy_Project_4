@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { FaHeart, FaDollarSign } from 'react-icons/fa';
 import { AppContext } from '../../App';
+import './Favoritess.css' 
 
 const Favorites = () => {
     const { products, favorites,setFavorites  } = useContext(AppContext);
@@ -30,10 +31,11 @@ const toggleFavorite = (productId) => {
 
 return (
     <div className="favorites-list">
+        <h2 >My Favorite</h2>
         {products
             .filter(product => favorites.includes(product._id)) // Filter favorite items
             .map(product => (
-                <div key={product._id} className="food-card">
+                <div key={product._id} className="food-card all-favorites-cards">
                     <div className="img-wrapper">
                         <img src={product.image} alt={product.name} className="product-image" />
                         <FaHeart

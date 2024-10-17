@@ -21,7 +21,8 @@ const LogIn =()=>{
     const [message, setMessage] = useState('');
 
 
-    const handleLogin = ()=> {
+    const handleLogin = (e)=> {
+        e.preventDefault()
         axios
             .post("http://localhost:5000/users/login",{
                 email, 
@@ -37,7 +38,7 @@ const LogIn =()=>{
                 console.log(isAdmin)
                 setisAdmin(isAdmin)
                 localStorage.setItem('isAdmin', isAdmin);
-                
+
                 if (isAdmin) {
                     navigate("/adminPanel");
                 } else {

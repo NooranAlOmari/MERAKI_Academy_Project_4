@@ -81,7 +81,7 @@ function OrderManage() {
                             <TableCell>Phone Number</TableCell>
                             <TableCell>Total Amount</TableCell>
                             <TableCell>Payment Method</TableCell>
-                            <TableCell>Location</TableCell> {/* New column for location */}
+                            <TableCell>Location</TableCell>
                             <TableCell>Details</TableCell>
                         </TableRow>
                     </TableHead>
@@ -96,7 +96,11 @@ function OrderManage() {
                                         <TableCell>{order.shippingAddress ? order.shippingAddress.state : 'N/A'}</TableCell>
                                         <TableCell>{order.totalAmount ? order.totalAmount.toFixed(2) : 'N/A'}</TableCell>
                                         <TableCell>{order.paymentMethod}</TableCell>
-                                        <TableCell>{order.shippingAddress ? `${order.shippingAddress.latitude}, ${order.shippingAddress.longitude}` : 'N/A'}</TableCell> {/* Displaying location */}
+                                        <TableCell>
+                                            {order.shippingAddress && order.shippingAddress.coordinates
+                                                ? `${order.shippingAddress.coordinates.latitude}, ${order.shippingAddress.coordinates.longitude}`
+                                                : 'Location not available'}
+                                        </TableCell>
                                         <TableCell>
                                             <IconButton onClick={() => handleExpandClick(order._id)} className="expand-button">
                                                 <ExpandMoreIcon />

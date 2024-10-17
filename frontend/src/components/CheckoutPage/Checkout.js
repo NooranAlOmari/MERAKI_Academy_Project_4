@@ -1,3 +1,5 @@
+
+
 import React, { useState, useContext } from 'react';
 import { AppContext } from '../../App';
 import axios from 'axios';
@@ -40,7 +42,7 @@ const CheckoutPage = () => {
             return;
         }
     
-        if (!shippingAddress.coordinates.latitude || !shippingAddress.coordinates.longitude) {
+        if (!shippingAddress.coordinates || !shippingAddress.coordinates.latitude || !shippingAddress.coordinates.longitude) {
             console.error('Shipping address coordinates are missing.');
             setError('Please enter address coordinates.');
             return;
@@ -109,6 +111,7 @@ const CheckoutPage = () => {
                     required 
                 />
 
+
                 <input 
                     type="text" 
                     className="input-field" 
@@ -120,7 +123,7 @@ const CheckoutPage = () => {
                 <input 
                     type="text" 
                     className="input-field" 
-                    placeholder="State" 
+                    placeholder="phone Number" 
                     onChange={(e) => setShippingAddress({ ...shippingAddress, state: e.target.value })} 
                     required 
                 />

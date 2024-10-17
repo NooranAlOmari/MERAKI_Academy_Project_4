@@ -22,7 +22,7 @@ html, body {
   margin-top: 0;
   margin-bottom: 500px; 
 
-  
+  font-family: 'Arial', sans-serif;/***/
   z-index: 1000;
 
 
@@ -32,7 +32,7 @@ html, body {
   color: #fff;
   font-size: 16px;
   font-weight: bold;
-  padding: 8px 16px;
+  padding: 8.65px 16px ;
   border-radius: 30px;
   transition: all 0.3s ease;
   text-align: center;

@@ -18,12 +18,15 @@
     align-items: center;
     padding: 20px;
     background-color: #e3f3e0;
-    width: 95vw;/*عرض الاخضر*/
+    width: 97.8vw;/*عرض الاخضر*/
+    height: 54.2vh;/*طول الاخضر*/
+    margin-top: -54.7px;/*بعد الاخضر*/
 }
 
 .hero-content {
     max-width: 50%;
-    text-align:start
+    text-align:start ;
+    margin-top: -9px;
 }
 
 .hero-content .small-text {
@@ -42,6 +45,8 @@
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 30px;
+    letter-spacing: 0px;
+
 }
 
 .hero-video {
@@ -60,7 +65,7 @@
 .alll-cards {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 47px; /*فوق كل الكارد*/
+    margin-top: 58px; /*فوق كل الكارد*/
     justify-content: space-around;
     padding: 10px;
     gap: 20px; /*الفراغ بين الكارد*/
@@ -154,6 +159,7 @@
     justify-content: space-between;
     font-size: 1rem;
     margin-top: 10px;
+    
 }
 
 
@@ -161,13 +167,13 @@
 .time-rating p {
     display: flex;
     align-items: center;
-    gap: 5px; /* الفراغ بين الايقونة و النص*/
+    /*gap: 5px;*/ /* الفراغ بين الايقونة و النص*/
     margin-top: 0; /* تقليل المسافة الي فوق عشان ارفعهم*/
+    font-size: 1rem;
 }
 
 .time-rating i {
     color: #ffd700; 
-    font-size: 90px; 
 }
 
 .calori {
