@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const LocationComponent = ({ onLocationChange }) => {
     const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
     const [error, setError] = useState(null);
-    const [notification, setNotification] = useState(''); // Notification
+    const [notification, setNotification] = useState('');
 
     const handleGetLocation = () => {
         if (navigator.geolocation) {
@@ -11,11 +11,10 @@ const LocationComponent = ({ onLocationChange }) => {
                 (position) => {
                     const { latitude, longitude } = position.coords;
                     setCoordinates({ latitude, longitude });
-                    onLocationChange({ latitude, longitude });/*Pass coordinates to map component */  
+                    onLocationChange({ latitude, longitude });
                     setError(null);
-                    setNotification('Your location has been successfully located!'); 
+                    setNotification('Your location has been successfully located!');
 
-                    // To empty the notification after 3 seconds
                     setTimeout(() => {
                         setNotification('');
                     }, 3000);
@@ -33,9 +32,10 @@ const LocationComponent = ({ onLocationChange }) => {
     return (
         <div>
             <button onClick={handleGetLocation} className="location-button">
-            Click to select location</button>
+                Click to select location
+            </button>
             {error && <p className="error-message">{error}</p>}
-            {notification && <p className="notification-message">{notification}</p>} {/* Show notification*/}
+            {notification && <p className="notification-message">{notification}</p>}
             {coordinates.latitude && coordinates.longitude && (
                 <div>
                     <p>Latitude: {coordinates.latitude}</p>

@@ -1,6 +1,4 @@
-
-
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../../App';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +17,7 @@ const CheckoutPage = () => {
         city: '',
         state: '',
         country: '',
-        coordinates: { latitude: null, longitude: null }  // Add a field for coordinates
+        coordinates: { latitude: null, longitude: null } 
     });
 
     const [paymentMethod, setPaymentMethod] = useState('');
@@ -29,7 +27,7 @@ const CheckoutPage = () => {
     const handleLocationChange = (location) => {
         setShippingAddress((prev) => ({
             ...prev,
-            coordinates: location // Update coordinates
+            coordinates: location
         }));
     };
 
@@ -48,7 +46,6 @@ const CheckoutPage = () => {
             return;
         }
 
-         // Check all address fields
         const { fullAddress, street, city, state, country } = shippingAddress;
         if (!fullAddress || !street || !city || !state || !country) {
             console.error('Please fill in all shipping address fields.');
@@ -82,7 +79,22 @@ const CheckoutPage = () => {
             setError('Failed to create request');
         }
     };
-    
+
+    useEffect(() => {
+        // Call the location handler if coordinates are not set
+        if (!shippingAddress.coordinates.latitude && !shippingAddress.coordinates.longitude) {
+            ///*****to automatically get the user's location
+            // can be removed
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    handleLocationChange({ latitude, longitude });
+                },
+                (err) => console.error('Error fetching location on mount:', err)
+            );
+        }
+    }, [shippingAddress.coordinates]);
+
     return (
         <div className="checkout-container cart-page slide-up-animation">
             <div className="checkout-header">
@@ -111,7 +123,6 @@ const CheckoutPage = () => {
                     required 
                 />
 
-
                 <input 
                     type="text" 
                     className="input-field" 
@@ -137,7 +148,7 @@ const CheckoutPage = () => {
                 />
 
                 <LocationComponent onLocationChange={handleLocationChange} />
-                <MapComponent coordinates={shippingAddress.coordinates} /> {/* Pass coordinates to map component*/}
+                <MapComponent coordinates={shippingAddress.coordinates} /> {/* Pass coordinates to map component */}
 
                 <div className="checkout-header">
                     <h2>Payment Method</h2>
@@ -182,3 +193,19 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
+
+
+//note useEffect(() => {
+       /* // Call the location handler if coordinates are not set
+        if (!shippingAddress.coordinates.latitude && !shippingAddress.coordinates.longitude) {
+            // Optionally to automatically get the user's location
+            // This line can be removed if  want to avoid auto-fetching the location
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    handleLocationChange({ latitude, longitude });
+                },
+                (err) => console.error('Error fetching location on mount:', err)
+            );
+        }
+    }, [shippingAddress.coordinates]);*/
