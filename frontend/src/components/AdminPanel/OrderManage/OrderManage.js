@@ -72,7 +72,7 @@ function OrderManage() {
                 message={message}
             />
             <TableContainer component={Paper} className="order-table-container">
-                <Table className="order-table">
+                <Table className="order-table order-items-table">
                     <TableHead className="table-header">
                         <TableRow>
                             <TableCell>Order ID</TableCell>

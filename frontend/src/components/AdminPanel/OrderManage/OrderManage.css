@@ -7,7 +7,7 @@
     margin-top: 750px; 
     position: relative;
     max-width: 1170px;
-    top: 363px;
+    top: 493px;
 }
 
 table {
@@ -115,8 +115,16 @@ tr:hover td {
 /********************/
 .css-1dc80h3-MuiTableCell-root {
     text-align: center !important; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 th, td {
     text-align: center !important; 
+}
+
+
+.order-items-table th, .order-items-table td {
+    width: 25%; /*******/
 }
