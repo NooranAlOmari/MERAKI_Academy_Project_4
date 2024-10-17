@@ -7,9 +7,8 @@ import './cartpage.css';
 
 const CartPage = () => {
     const navigate = useNavigate();
-    const { token } = useContext(AppContext); 
     const [error, setError] = useState(null);
-    const { setProducts, products, setselectedproductId, cart = [], setupdateCart } = useContext(AppContext);
+    const { token,setProducts, products, setselectedproductId, cart, setupdateCart } = useContext(AppContext);
 
     // Fetch cart data from the server
     useEffect(() => {

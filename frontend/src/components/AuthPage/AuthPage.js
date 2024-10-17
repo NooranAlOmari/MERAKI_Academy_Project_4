@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./AuthPage.css";
 import LogIn from '../Login';
 import Register from "../Register";
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleOAuthProvider } from '@react-oauth/google';/****/
 
 export default function AuthPage() {
   const [type, setType] = useState("signIn");
