@@ -44,32 +44,36 @@ const LogIn = () => {
             });
     };
 
-    const handleGoogleLogin = (credentialResponse) => {
-        const token = credentialResponse.credential; // get the token from response
 
-        axios
-            .post("http://localhost:5000/users/google-login", {
-                idToken: token 
-            })
-            .then((res) => {
-                console.log(res);
-                setToken(res.data.token);
-                localStorage.setItem('token', res.data.token);
-                const isAdmin = res.data.isAdmin;
-                setisAdmin(isAdmin);
-                localStorage.setItem('isAdmin', isAdmin);
+/******************************************* */
 
-                if (isAdmin) {
-                    navigate("/adminPanel");
-                } else {
-                    navigate("/");
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                setMessage(err.response.data.message);
-            });
-    };
+const handleGoogleLogin = (credentialResponse) => {
+    const token = credentialResponse.credential; // Get token from response
+
+    axios
+        .post("http://localhost:5000/users/google-login", {
+            idToken: token 
+        })
+        .then((res) => {
+            console.log(res);
+            setToken(res.data.token);
+            localStorage.setItem('token', res.data.token);
+            const isAdmin = res.data.isAdmin;
+            setisAdmin(isAdmin);
+            localStorage.setItem('isAdmin', isAdmin);
+
+            if (isAdmin) {
+                navigate("/adminPanel");
+            } else {
+                navigate("/");
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+            setMessage(err.response.data.message);
+        });
+};
+
 
     return (
         <>
@@ -122,3 +126,5 @@ const LogIn = () => {
 }
 
 export default LogIn;
+
+/************************************************************************************************************* */

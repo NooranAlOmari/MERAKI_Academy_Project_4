@@ -1,6 +1,8 @@
 const usersModel = require("../models/users");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { OAuth2Client } = require('google-auth-library');/*****/
+
 
 // This function creates a new author (new user)
 const register = (req, res) => {
@@ -152,6 +154,64 @@ const deleteUserById = async (req, res) => {
 };
 
 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////******googleLogin******////
+
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
+const googleLogin = async (req, res) => {
+    const { idToken } = req.body; // Get idToken from login request
+    try {
+        const ticket = await client.verifyIdToken({
+            idToken,
+            audience: process.env.GOOGLE_CLIENT_ID, 
+        });
+        const payload = ticket.getPayload();
+        const { email, name } = payload;
+
+        // Check if the user exists in the database
+        let user = await usersModel.findOne({ email });
+
+        if (!user) {
+            // If the user does not exist, create it.
+            user = new usersModel({
+                email,
+                firstName: name,
+                password: 'google-auth', //random password or not store a password.
+                role: "67007c95b2e85f1f89763cbc", 
+            });
+            await user.save();
+        }
+
+        // Generate JWT token
+        const payloadJwt = {
+            userId: user._id,
+            email: user.email,
+        };
+
+        const token = jwt.sign(payloadJwt, process.env.SECRET, { expiresIn: '60m' });
+
+        res.status(200).json({
+            success: true,
+            message: 'Login successful!',
+            token,
+            isAdmin: user.role === 'admin',
+        });
+    } catch (error) {
+        console.error('Error during Google login:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Server Error',
+            error: error.message,
+        });
+    }
+};
+
+
+
+
 module.exports = {
   register,
   login,
@@ -159,4 +219,5 @@ module.exports = {
   getUserById, 
   updateUserById, 
   deleteUserById,
+  googleLogin
 };

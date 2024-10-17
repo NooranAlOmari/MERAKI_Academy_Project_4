@@ -8,6 +8,7 @@ const {
   getUserById, 
   updateUserById, 
   deleteUserById,
+  googleLogin
 } = require("../controllers/users");
 
 // define router
@@ -55,6 +56,10 @@ usersRouter.get("/",authentication,authorization(["admin"]), getAllUser);
 usersRouter.get("/:id",authentication,authorization(["admin"]), getUserById);
 usersRouter.put("/:id",authentication,authorization(["admin"]), updateUserById);
 usersRouter.delete("/:id",authentication,authorization(["admin"]), deleteUserById);
+
+
+
+usersRouter.post('/google-login', googleLogin);
 
 
 
