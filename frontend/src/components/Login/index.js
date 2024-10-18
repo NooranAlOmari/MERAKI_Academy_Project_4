@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from '../../App';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,79 +7,42 @@ import './Login.css';
 
 const LogIn = () => {
     const navigate = useNavigate();
-
-    const {
-        setToken,
-        setisAdmin,
-        token
-    } = useContext(AppContext);
-
+    const { setToken, setisAdmin } = useContext(AppContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
 
     const handleLogin = (e) => {
         e.preventDefault();
-        axios
-            .post("http://localhost:5000/users/login", {
-                email,
-                password
-            })
+        axios.post("http://localhost:5000/users/login", { email, password })
             .then((res) => {
-                console.log(res);
                 setToken(res.data.token);
-            console.log(res.data.token)
                 localStorage.setItem('token', res.data.token);
                 const isAdmin = res.data.isAdmin;
                 setisAdmin(isAdmin);
                 localStorage.setItem('isAdmin', isAdmin);
-
-                if (isAdmin) {
-                    navigate("/adminPanel");
-                } else {
-                    navigate("/");
-                }
-                console.log(token)
-
+                navigate(isAdmin ? "/adminPanel" : "/");
             })
             .catch((err) => {
-                console.log(err);
                 setMessage(err.response.data.message);
             });
     };
 
-
-/******************************************* */
-
-const handleGoogleLogin = (credentialResponse) => {
-    const token = credentialResponse.credential; // Get token from response
-
-    axios
-        .post("http://localhost:5000/users/google-login", {
-            idToken: token 
-        })
-        .then((res) => {
-            console.log(res);
-            setToken(res.data.token);
-            console.log(token)
-            console.log(res.data.token)
-            localStorage.setItem('token', res.data.token);
-            const isAdmin = res.data.isAdmin;
-            setisAdmin(isAdmin);
-            localStorage.setItem('isAdmin', isAdmin);
-
-            if (isAdmin) {
-                navigate("/adminPanel");
-            } else {
-                navigate("/");
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-            setMessage(err.response.data.message);
-        });
-};
-
+    const handleGoogleLogin = (credentialResponse) => {
+        const token = credentialResponse.credential;
+        axios.post("http://localhost:5000/users/google-login", { idToken: token })
+            .then((res) => {
+                setToken(res.data.token);
+                localStorage.setItem('token', res.data.token);
+                const isAdmin = res.data.isAdmin;
+                setisAdmin(isAdmin);
+                localStorage.setItem('isAdmin', isAdmin);
+                navigate(isAdmin ? "/adminPanel" : "/");
+            })
+            .catch((err) => {
+                setMessage(err.response.data.message);
+            });
+    };
 
     return (
         <>
@@ -92,13 +55,22 @@ const handleGoogleLogin = (credentialResponse) => {
                         <a href="#" className="social">
                             <i className="fab fa-facebook-f" />
                         </a>
-                        <a href="#" className="social">
-                            <i className="fab fa-google-plus-g" />
-                        </a>
+                        
+                        {/*Google Login بدون النص */}
+                        <div className="google-login-button-wrapper">
+                            <GoogleLogin
+                                onSuccess={handleGoogleLogin}
+                                onError={(error) => {
+                                    console.error("Login Failed: ", error);
+                                }}
+                            />
+                        </div>
+
                         <a href="#" className="social">
                             <i className="fab fa-linkedin-in" />
                         </a>
                     </div>
+
                     <span>or use your account</span>
 
                     <input
@@ -117,13 +89,6 @@ const handleGoogleLogin = (credentialResponse) => {
 
                     <button onClick={handleLogin}>Sign in</button>
 
-                    <GoogleLogin
-                        onSuccess={handleGoogleLogin} 
-                        onError={(error) => {
-                            console.error("Login Failed: ", error);
-                        }}
-                    />
-
                     {message && <div className='message'>{message}</div>}
                 </form>
             </div>
@@ -132,5 +97,3 @@ const handleGoogleLogin = (credentialResponse) => {
 }
 
 export default LogIn;
-
-/************************************************************************************************************* */

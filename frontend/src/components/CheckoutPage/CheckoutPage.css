@@ -10,7 +10,9 @@
     color: #333; 
     margin-top: 50px;
     position: relative;
-    margin-top: 50px; /*navbarمسافة من فوق عشان */
+    margin-top: 50px; /*navbarمسافة من 
+    فوق عشان */
+    margin-bottom: 20px;
 }
 
 /*frame*/

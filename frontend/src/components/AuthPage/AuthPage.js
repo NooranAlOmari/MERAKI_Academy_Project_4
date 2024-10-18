@@ -18,6 +18,7 @@ export default function AuthPage() {
     "container " + (type === "signUp" ? "right-panel-active" : "");
 
   return (
+    
     <GoogleOAuthProvider clientId="480182998123-4qcfjj4047u2nbrf00d5mbtv8m5k5bsv.apps.googleusercontent.com"> 
       <div className="AuthPage slide-up-animation">
         <h2>Sign in/up Form</h2>

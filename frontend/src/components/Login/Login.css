@@ -1,0 +1,47 @@
+.google-login-button-wrapper {
+    display: inline-block;
+    border-radius: 50%; 
+    overflow: hidden; 
+    width: 43px; 
+    height: 43px; 
+    border: 3px solid rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    position: relative; 
+    transform: translateY(16px); /* الإزاحة السفلية */
+    
+}
+
+.google-login-button-wrapper div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+margin-left: -.6px;
+}
+
+.google-login-button-wrapper button {
+    width: 100%; 
+    height: 100%; 
+    border-radius: 50%; 
+    border: none;
+    padding: 0; 
+    cursor: pointer;
+    background-color: #fff; 
+}
+
+.google-login-button-wrapper button > div:first-child {
+    display: none; /* إخفاء النص */
+}
+
+.google-login-button-wrapper button svg,
+.google-login-button-wrapper button i {
+    font-size: 30px; 
+    color: #db4437;
+    margin: 0; 
+    padding: 0; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%) scale(1); /* نقلها للنص*/
+}

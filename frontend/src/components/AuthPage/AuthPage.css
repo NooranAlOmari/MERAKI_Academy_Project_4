@@ -1,7 +1,7 @@
 .AuthPage {
     font-family: sans-serif;
     text-align: center;
-    margin-top: 280px/*navbarمساحة من فوق عشان */;
+    margin-top: 15px/*navbarمساحة من فوق عشان */;
     display :grid;
     justify-content: center;
     align-items: center;
@@ -13,6 +13,7 @@
     align-items: center;
     flex-direction: column;
     font-family: "Montserrat", sans-serif;
+    margin-bottom: 61px
   }
   
   @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
@@ -41,17 +42,18 @@
   }
   
   span {
-    font-size: 12px;
+    font-size: 12.9px;
   }
   
   a {
     color: #333;
-    font-size: 14px;
+    font-size: 20px;
     text-decoration: none;
     margin: 15px 0;
+    color: rgb(26, 48, 138);
   }
   
-  button {
+    button {
     border-radius: 20px;
     border: 1px solid #ff4b2b;
     background-color: #ff4b2b;
@@ -62,6 +64,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+    margin-top: 10px;
   }
   
   button:active {
@@ -221,17 +224,21 @@
   
   .social-container {
     margin: 20px 0;
+    margin-top: -10px;
+    margin-bottom: 35px;
   }
   
   .social-container a {
-    border: 1px solid #dddddd;
     border-radius: 50%;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     margin: 0 5px;
-    height: 40px;
-    width: 40px;
+    height: 43px;
+    width: 43px;
+    border: 3px solid rgba(0, 0, 0, 0.2); /* إطار أكثر وضوحاً */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف */
+    
   }
   
   footer {
