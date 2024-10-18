@@ -11,6 +11,7 @@ const LogIn = () => {
     const {
         setToken,
         setisAdmin,
+        token
     } = useContext(AppContext);
 
     const [email, setEmail] = useState('');
@@ -27,6 +28,7 @@ const LogIn = () => {
             .then((res) => {
                 console.log(res);
                 setToken(res.data.token);
+            console.log(res.data.token)
                 localStorage.setItem('token', res.data.token);
                 const isAdmin = res.data.isAdmin;
                 setisAdmin(isAdmin);
@@ -37,6 +39,8 @@ const LogIn = () => {
                 } else {
                     navigate("/");
                 }
+                console.log(token)
+
             })
             .catch((err) => {
                 console.log(err);
@@ -57,6 +61,8 @@ const handleGoogleLogin = (credentialResponse) => {
         .then((res) => {
             console.log(res);
             setToken(res.data.token);
+            console.log(token)
+            console.log(res.data.token)
             localStorage.setItem('token', res.data.token);
             const isAdmin = res.data.isAdmin;
             setisAdmin(isAdmin);

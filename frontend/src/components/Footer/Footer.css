@@ -1,7 +1,4 @@
-/* إعدادات عامة */
 
-
-/* إعدادات الـ navbar */
 .navbar {
     display: flex;
     justify-content: space-around;
@@ -17,16 +14,6 @@
     z-index: 1000;
 }
 
-/* إعدادات السلة */
-.all-the-page {
-    flex: 1; /* ليملأ المساحة المتاحة بين navbar والفوتر */
-    display: flex;
-    flex-direction: column;
-    padding-top: 70px; /* ترك مساحة لتفادي تداخل السلة مع navbar */
-    padding-bottom: 70px; /* ترك مساحة لتفادي تداخل السلة مع الفوتر */
-}
-
-/* إعدادات الفوتر */
 .footer-section {
     margin: 0;
     padding: 15px;
@@ -34,12 +21,12 @@
 
 .footer {
     display: flex;
-    width: 100vw; /* عرض الصفحة كلها */
+    width: 100vw; 
     justify-content: space-around;
     background: linear-gradient(90deg, #ff8a00, #da1b60);
     color: #fff;
-    position: relative; /* اجعل الفوتر نسبي */
-    margin-top: auto; /* اجعل الفوتر دائمًا في الأسفل */
+    position: relative; 
+    margin-top: auto; 
 }
 
 .footer-section h3 {
@@ -93,19 +80,4 @@
     color: #fff; 
 }
 
-/* إعدادات السلة (cart-page) */
-.cart-page {
-    background: #fff9f9;
-    padding: 20px;
-    max-width: 750px;
-    margin: 0 auto;
-    border: 2px solid #FADADD;
-    border-radius: 15px; 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-    font-family: 'Arial', sans-serif;
-    color: #333; 
-    position: relative; /* استخدم نسبي هنا */
-    margin-top: 20px; /* يمكنك ضبط المسافة حسب الحاجة */
-}
 
-/* بقية الأكواد ستبقى كما هي */

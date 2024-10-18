@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
+import {useNavigate } from "react-router-dom";
+
 import { FaHeart, FaDollarSign } from 'react-icons/fa';
 import { AppContext } from '../../App';
 import './Favoritess.css' 
 
 const Favorites = () => {
-    const { products, favorites,setFavorites  } = useContext(AppContext);
+    const navigate = useNavigate();
+
+    const { products, favorites,setFavorites,setselectedproductId  } = useContext(AppContext);
 
     // If there are no favorites
     if (favorites.length === 0) {
@@ -29,15 +33,24 @@ const toggleFavorite = (productId) => {
 };
 
 
+const handleCategoryClick = (productId) => {
+    setselectedproductId(productId);
+    navigate(`/products/details/${productId}`); //
+}
+
 return (
-    <div className="favorites-list slide-up-animation">
+    <div className="favorites-list ">
         <h2 >My Favorite</h2>
         {products
             .filter(product => favorites.includes(product._id)) // Filter favorite items
             .map(product => (
-                <div key={product._id} className="food-card all-favorites-cards">
+                <div key={product._id} className="food-card all-favorites-cards slide-up-animation">
                     <div className="img-wrapper">
-                        <img src={product.image} alt={product.name} className="product-image" />
+                        <img 
+                        src={product.image} 
+                        alt={product.name} 
+                        className="product-image" 
+                        onClick={() => handleCategoryClick(product._id)}/>
                         <FaHeart
                             className={`favorite-icon ${favorites.includes(product._id) ? 'favorited' : ''}`}
                             onClick={() => toggleFavorite(product._id)} // Heart onclick 

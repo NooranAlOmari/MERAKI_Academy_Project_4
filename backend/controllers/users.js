@@ -189,6 +189,14 @@ const googleLogin = async (req, res) => {
         const payloadJwt = {
             userId: user._id,
             email: user.email,
+            role: {
+              "role": "admin",
+              "permissions": [
+                "admin"
+              ]
+            },/******************
+            عشان تصير زي توكن العادية عملت ديكوديد و قلدتها....و عشان تزبط اوثرايزيشن****** */
+            
         };
 
         const token = jwt.sign(payloadJwt, process.env.SECRET, { expiresIn: '60m' });

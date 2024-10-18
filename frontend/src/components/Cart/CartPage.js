@@ -85,13 +85,13 @@ const CartPage = () => {
 
     return (
         <div className='all-the-page'>
-        <div className="cart-page slide-up-animation">
+        <div className="cart-page ">
             <h1 className='YourCart'>Your Cart</h1>
             {error && <p className="error-message">{error}</p>}
             {Array.isArray(cart) && cart.length > 0 ? (
                 <div className="cart-items">
                     {cart.map((item, index) => (
-                        <div key={index} className="cart-item">
+                        <div key={index} className="cart-item slide-up-animation">
                             <div className="item-image">
                                 <img src={item.product.image} alt={item.product.name} className="product-imagee" />
                             </div>

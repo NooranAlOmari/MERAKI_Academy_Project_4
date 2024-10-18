@@ -11,13 +11,16 @@ const CheckoutPage = () => {
     const navigate = useNavigate();
     const { token, cart } = useContext(AppContext);
     
+    // Default coordinates (e.g., city center or a default location)
+    const defaultCoordinates = { latitude: 25.276987, longitude: 55.296249 }; // Example for Dubai
+
     const [shippingAddress, setShippingAddress] = useState({
         fullAddress: '',
         street: '',
         city: '',
         state: '',
         country: '',
-        coordinates: { latitude: null, longitude: null } 
+        coordinates: defaultCoordinates // Default to some coordinates
     });
 
     const [paymentMethod, setPaymentMethod] = useState('');
@@ -30,8 +33,10 @@ const CheckoutPage = () => {
             coordinates: location
         }));
     };
-console.log("hi this is the cart")
-console.log(cart)
+
+    console.log("hi this is the cart")
+    console.log(cart)
+
     const handleSubmit = async (e) => {
         e.preventDefault();
     
@@ -82,28 +87,27 @@ console.log(cart)
     };
 
     useEffect(() => {
-        // Call the location handler if coordinates are not set
-        if (!shippingAddress.coordinates.latitude && !shippingAddress.coordinates.longitude) {
-            ///*****to automatically get the user's location
-            // can be removed
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const { latitude, longitude } = position.coords;
-                    handleLocationChange({ latitude, longitude });
-                },
-                (err) => console.error('Error fetching location on mount:', err)
-            );
-        }
-    }, [shippingAddress.coordinates]);
+        // Automatically fetch user's location on mount
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                handleLocationChange({ latitude, longitude });
+            },
+            (err) => {
+                console.error('Error fetching location:', err);
+                // We continue with the default coordinates if the location is not available
+            }
+        );
+    }, []);
 
     return (
-        <div className="checkout-container cart-page slide-up-animation">
+        <div className="checkout-container cart-page slide-up-animation'">
             <div className="checkout-header">
                 <h1>Checkout</h1>
                 {error && <p className="error-message">{error}</p>}
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} >
                 <div className="checkout-header">
                     <h2>Shipping Address</h2>
                 </div>
@@ -135,7 +139,7 @@ console.log(cart)
                 <input 
                     type="text" 
                     className="input-field" 
-                    placeholder="phone Number" 
+                    placeholder="State" 
                     onChange={(e) => setShippingAddress({ ...shippingAddress, state: e.target.value })} 
                     required 
                 />
@@ -148,6 +152,7 @@ console.log(cart)
                     required 
                 />
 
+                {/* Show Location and Map */}
                 <LocationComponent onLocationChange={handleLocationChange} />
                 <MapComponent coordinates={shippingAddress.coordinates} /> {/* Pass coordinates to map component */}
 
@@ -194,19 +199,3 @@ console.log(cart)
 };
 
 export default CheckoutPage;
-
-
-//note useEffect(() => {
-       /* // Call the location handler if coordinates are not set
-        if (!shippingAddress.coordinates.latitude && !shippingAddress.coordinates.longitude) {
-            // Optionally to automatically get the user's location
-            // This line can be removed if  want to avoid auto-fetching the location
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const { latitude, longitude } = position.coords;
-                    handleLocationChange({ latitude, longitude });
-                },
-                (err) => console.error('Error fetching location on mount:', err)
-            );
-        }
-    }, [shippingAddress.coordinates]);*/
