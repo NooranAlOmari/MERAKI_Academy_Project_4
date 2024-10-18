@@ -30,7 +30,7 @@ const App = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [products, setProducts] = useState([])
   const [selectedproductId, setselectedproductId] = useState(null);
-  const [cart, setupdateCart] = useState();
+  const [cart, setupdateCart] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [quantity, setQuantity] = useState(1);
 
@@ -55,7 +55,6 @@ const App = () => {
     
     }}>
     
-    <Navbar/>
 
     <ToastContainer
     position="top-right"
@@ -73,6 +72,8 @@ const App = () => {
 
     <div className="App">
     <header className="App-header">
+    <Navbar/>
+
     </header>
     
     </div>

@@ -7,7 +7,7 @@
     align-items: center;
     margin: 15px;
     max-width: 100%;
-    margin-top: 1025px; /* navbarمسافة عشان تنزل لتحت */
+    margin-top: 40px; /* navbarمسافة عشان تنزل لتحت */
     font-family: 'Arial', sans-serif;
 
 }
@@ -18,9 +18,9 @@
     align-items: center;
     padding: 20px;
     background-color: #e3f3e0;
-    width: 97.8vw;/*عرض الاخضر*/
+    width: 97.7vw;/*عرض الاخضر*/
     height: 54.2vh;/*طول الاخضر*/
-    margin-top: -54.7px;/*بعد الاخضر*/
+    margin-top: -76.7px;/*بعد الاخضر*/
 }
 
 .hero-content {
@@ -142,7 +142,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 188.2px;     /***********************/
+    height: 188.5px;     /***********************/
 }
 
 

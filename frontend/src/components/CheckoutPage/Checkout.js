@@ -30,7 +30,8 @@ const CheckoutPage = () => {
             coordinates: location
         }));
     };
-
+console.log("hi this is the cart")
+console.log(cart)
     const handleSubmit = async (e) => {
         e.preventDefault();
     

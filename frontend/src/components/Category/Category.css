@@ -1,6 +1,7 @@
 .categorized {
     padding: 0px; /*البعد عن الفيديو*/
     font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
 }
 
 
@@ -36,8 +37,9 @@
 }
 
 .category-card h3 {
-  margin: 18px 0; 
+  margin: 20px 0; 
   font-size: 1.2rem; 
+  font-family: 'Arial', sans-serif;
 }
 
 .category-card p {
@@ -46,6 +48,7 @@
     text-align: center;
     letter-spacing: normal;/**لانه بكله مش نورمال space*/
     font-size: 16px;
+    font-family: 'Arial', sans-serif;
 }
 
 

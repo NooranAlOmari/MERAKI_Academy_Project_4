@@ -24,7 +24,12 @@ const Cart = ({ productId, productName, productPrice, quantity, setQuantity }) =
         )
         .then((response) => {
             if (response.data.success) {
-                setupdateCart(response.data.cart);
+                setupdateCart(response.data.cart.items);
+                console.log("i am here")
+                console.log(response.data.cart.items
+                )
+                console.log(response.data.cart
+                )
                 console.log('Adding product to cart...');
                 toast.success('Product added to cart successfully!'); // Success notification
                 navigate(-1); 

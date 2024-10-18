@@ -84,6 +84,7 @@ const CartPage = () => {
     const { subtotal, vat, deliveryFree, total } = calculateCartSummary();
 
     return (
+        <div className='all-the-page'>
         <div className="cart-page slide-up-animation">
             <h1 className='YourCart'>Your Cart</h1>
             {error && <p className="error-message">{error}</p>}
@@ -139,6 +140,7 @@ const CartPage = () => {
             ) : (
                 <p>Your cart is empty.</p>
             )}
+        </div>
         </div>
     );
 };

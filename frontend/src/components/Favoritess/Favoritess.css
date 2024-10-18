@@ -10,7 +10,7 @@
     flex-wrap: wrap;  /* عشان سكرول و ينعرضو يصغرو لجنب بعض*/
     justify-content:space-around ;
     padding:0px 50px;
-    margin-top: 770px;
+    margin-top: 70px;
 
     
 }
@@ -39,7 +39,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 78px 0px;/*المسافة من فوق عشان ما يغطي عالهيدر بار*/
     z-index: 1000;
-    margin-top: 77px;
+    margin-top: 66.32px;/*77*/
 }
 
 .messeges-favorites{

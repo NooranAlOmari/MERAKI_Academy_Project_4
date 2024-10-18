@@ -30,7 +30,7 @@ const toggleFavorite = (productId) => {
 
 
 return (
-    <div className="favorites-list">
+    <div className="favorites-list slide-up-animation">
         <h2 >My Favorite</h2>
         {products
             .filter(product => favorites.includes(product._id)) // Filter favorite items

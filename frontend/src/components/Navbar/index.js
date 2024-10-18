@@ -8,7 +8,9 @@ const Navbar = () => {
   const { cart  } = useContext(AppContext); 
 
   // ********optional chaining*********
-  const totalItems = cart?.reduce((acc, item) => acc + item.quantity, 0) || 0;
+  const totalItems = Array.isArray(cart) 
+  ? cart.reduce((acc, item) => acc + item.quantity, 0) 
+  : 0; 
 console.log(cart)
 
   return (
@@ -29,9 +31,10 @@ console.log(cart)
         <i className="fas fa-heart"></i> Favorites
       </div>
       <div className="navbar-item" onClick={() => navigate('/cart')}>
-                <i className="fas fa-shopping-cart"></i> Cart
-                <span className="cart-count">{totalItems > 0 ? totalItems : 0}</span> 
-            </div>
+  <i className="fas fa-shopping-cart"></i> Cart
+  <span className="cart-count">{totalItems > 0 ? totalItems : 0}</span>
+</div>
+
     </nav>
   );
 };
