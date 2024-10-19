@@ -2,6 +2,8 @@
     padding: 0px; /*البعد عن الفيديو*/
     font-family: 'Arial', sans-serif;
     overflow-x: hidden;
+    position: relative;
+    z-index: 3;
 }
 
 

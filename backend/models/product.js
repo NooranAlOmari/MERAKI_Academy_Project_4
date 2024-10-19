@@ -15,10 +15,10 @@ const mongoose = require("mongoose");
     image: {type: String,required: true,},
 
     rating: {
-      type: Number, 
+      type: String,
       required: true,
-      min: 1, 
-      max: 5, 
+      
+      
   },
     reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
 
@@ -30,3 +30,10 @@ const mongoose = require("mongoose");
 
 
   module.exports = mongoose.model("Product", productSchema);
+
+
+  /**rating: {
+      /*type: Number,*/ 
+      //required: true,
+      /*min: 1, 
+      max: 5,*/ 

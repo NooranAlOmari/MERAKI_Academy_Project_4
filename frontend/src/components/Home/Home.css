@@ -3,14 +3,13 @@
     height: 100vh;
     margin-top: -60px; /*  navbar height عشان */
     margin-bottom: -408px;/*مسافة بين فيديو كاتيقوري*/
-    overflow: hidden;
-    z-index: -1;
+    overflow: visible;
         font-family: 'Arial', sans-serif;
 }
   
 .header-background {
     position: absolute; 
-    top: 0px; /**//*فيديو  و نافبار*/
+    top: -6.3px; /**//*فيديو  و نافبار*/
     left: 0;
     width: 100%;
         height: 42.5%; 
@@ -46,6 +45,7 @@
     width: 100%;
     border-radius: 25px;
     margin-top: 40px;
+    z-index: 3;
 }
   
 .search-bar input {
@@ -55,6 +55,8 @@
     border-radius: 25px 0 0 25px;
     font-size: 16px;
     outline: none;
+    position: relative;
+    z-index: 3;
 }
   
 .search-bar button {
@@ -68,7 +70,10 @@
     font-weight: bold;
     text-transform: none;
     transition: background-color 0.3s ease;
-    margin-top: 0 !important
+    margin-top: 0 !important;
+    position: relative;
+    position: relative;
+    z-index: 3;
 }
   
 .search-bar button:hover {

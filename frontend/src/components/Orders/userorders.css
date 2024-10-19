@@ -6,7 +6,10 @@
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   
 }
+
+
 
 h2 {
     text-align: center;
@@ -80,4 +83,30 @@ table {
 .table-headerr th, .table-headerr td {
     width: 33% !important; 
     text-align: center !important; /* لتوسيط النص*/
+}
+
+
+/*******************************/
+.Your-Orders-h2 {
+    font-size: 24px;
+    color: #ff6f61;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 78px 0px;
+    z-index: 1000;
+    margin-top: 66.2px !important;
+    font-family: 'Arial', sans-serif !important;
+    font-weight: bolder !important;
+    padding: 9.8px;
+}
+
+
+.order-manageeeee{
+    margin-top: 50px !important;
+    margin-bottom: 25px !important;
 }

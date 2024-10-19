@@ -59,8 +59,8 @@ const UserOrders = () => {
 
 
     return (
-        <Box className="order-manage" p={3} sx={{ maxWidth: '1170px', margin: 'auto', backgroundColor: '#f4f7f9', borderRadius: '10px', boxShadow: '0 8px 16px rgba(0, 0, 0, 0.05)' }}>
-            <Typography variant="h4" align="center" gutterBottom>Your Orders</Typography>
+        <Box className="order-manageeeee" p={3} sx={{ maxWidth: '1170px', margin: 'auto', backgroundColor: '#f4f7f9', borderRadius: '10px', boxShadow: '0 8px 16px rgba(0, 0, 0, 0.05)' }}>
+            <Typography variant="h5.4" align="center" gutterBottom className='Your-Orders-h2'>Your Orders</Typography>
             {loading && <Typography>Loading orders...</Typography>}
             {error && <Typography color="error">{error}</Typography>}
 
@@ -74,7 +74,7 @@ const UserOrders = () => {
                             <TableCell>Total Amount</TableCell>
                             <TableCell>Order Date</TableCell>
                             <TableCell>Is Delivered</TableCell>
-                            <TableCell>Actions</TableCell>
+                            <TableCell>Order Items</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

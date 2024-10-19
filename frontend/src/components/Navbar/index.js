@@ -15,25 +15,28 @@ console.log(cart)
 
   return (
     <nav className="navbar">
+
       <div className="navbar-item" onClick={() => navigate('/')}>
         <i className="fas fa-home"></i> Home
       </div>
-      <div className="navbar-item" onClick={() => navigate('/AuthPage')}>
-        <i className="fas fa-sign-in-alt"></i> Log In
-      </div>
-      <div className="navbar-item" onClick={() => navigate('/our-chef')}>
-        <i className="fas fa-user-tie"></i> Our Chefs
-      </div>
+
       <div className="navbar-item" onClick={() => navigate('/my-orders')}>
         <i className="fas fa-box"></i> My Orders
       </div>
+
       <div className="navbar-item" onClick={() => navigate('/Favorites')}>
-        <i className="fas fa-heart"></i> Favorites
+        <i className="fas fa-heart"></i>Favorites
       </div>
+
       <div className="navbar-item" onClick={() => navigate('/cart')}>
   <i className="fas fa-shopping-cart"></i> Cart
   <span className="cart-count">{totalItems > 0 ? totalItems : 0}</span>
 </div>
+
+<div className="navbar-item" onClick={() => navigate('/AuthPage')}>
+        <i className="fas fa-sign-in-alt"></i> Log In
+      </div>
+
 
     </nav>
   );

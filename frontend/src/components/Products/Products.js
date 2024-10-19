@@ -66,13 +66,13 @@ let videoSrc = '';
 if (categoryId === '670742a13bced54c5a10bfa9') {
     videoSrc = '/home-video.mp4';  
 } else if (categoryId === '6707455a3bced54c5a10bfaf') {
-    videoSrc = '/12345678.mp4';  
-} else if (categoryId === '6707455a3bced54c5a10bfaf') {
-    videoSrc = '/12345678.mp4';  
-} else if (categoryId === '6707455a3bced54c5a10bfaf') {
-    videoSrc = '/12345678.mp4';  
-} else if (categoryId === '6707455a3bced54c5a10bfaf') {
-    videoSrc = '/12345678.mp4';  
+    videoSrc = '/main_meat.mp4';  
+} else if (categoryId === '6710d7048e60dc47690cd6f3') {
+    videoSrc = '/main_vegitrerian.mp4';  
+} else if (categoryId === '6710dc448e60dc47690cd750') {
+    videoSrc = '/main_desert.mp4';  
+} else if (categoryId === '6710de418e60dc47690cd754') {
+    videoSrc = '/main_beverges.mp4';  
 } else if (categoryId === '6707455a3bced54c5a10bfaf') {
     videoSrc = '/12345678.mp4';  
 } else if (categoryId === '6707455a3bced54c5a10bfaf') {
@@ -80,7 +80,7 @@ if (categoryId === '670742a13bced54c5a10bfa9') {
 } else if (categoryId === '6707455a3bced54c5a10bfaf') {
     videoSrc = '/12345678.mp4';  
 } else {
-    videoSrc = '/12345678.mp4';  
+    videoSrc = '/istockphoto-1822750530-640_adpp_is.mp4';  
 }
 /******************************/
 /******************************/
@@ -92,7 +92,7 @@ return (
             <div className="hero-content">
                 <span className="small-text">Hungry?</span>
                 <h1>WELCOME TO <br /> FOODIE HEAVEN</h1>
-                <p>Explore the finest and most delicious recipes here. Cook now to satisfy your cravings!</p>
+                <p>Explore the most delicious and tasty recipes here. Order now to satisfy your cravings!</p>
             </div>
             <div className="hero-video">
                 <video autoPlay muted loop>
