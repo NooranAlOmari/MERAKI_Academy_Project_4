@@ -65,6 +65,15 @@
     text-transform: uppercase;
     transition: transform 80ms ease-in;
     margin-top: 10px;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+
+  button:hover{
+    background-color: #ff4a3d;
+    transform: scale(1.05);
   }
   
   button:active {

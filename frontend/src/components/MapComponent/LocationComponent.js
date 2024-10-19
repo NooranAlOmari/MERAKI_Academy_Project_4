@@ -1,9 +1,11 @@
+// LocationComponent.js
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LocationComponent = ({ onLocationChange }) => {
     const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
     const [error, setError] = useState(null);
-    const [notification, setNotification] = useState('');
 
     const handleGetLocation = () => {
         if (navigator.geolocation) {
@@ -13,33 +15,35 @@ const LocationComponent = ({ onLocationChange }) => {
                     setCoordinates({ latitude, longitude });
                     onLocationChange({ latitude, longitude });
                     setError(null);
-                    setNotification('Your location has been successfully located!');
-
-                    setTimeout(() => {
-                        setNotification('');
-                    }, 3000);
+                    toast.success(`Your location has been successfully located! Latitude: ${latitude}, Longitude: ${longitude}`, {
+                        position: 'bottom-right',
+                        autoClose: 3000,
+                    });
                 },
                 (err) => {
                     setError('Failed to fetch location. Make sure GPS is enabled.');
                     console.error('Error fetching location:', err);
+                    toast.error('Failed to fetch location. Make sure GPS is enabled.', {
+                        position: 'bottom-right',
+                    });
                 }
             );
         } else {
             setError('Your device does not support geolocation.');
+            toast.error('Your device does not support geolocation.', {
+                position: 'bottom-right',
+            });
         }
     };
 
     return (
-        <div>
+        <div className="map-container">
             <button onClick={handleGetLocation} className="location-button">
                 Click to select location
             </button>
             {error && <p className="error-message">{error}</p>}
-            {notification && <p className="notification-message">{notification}</p>}
             {coordinates.latitude && coordinates.longitude && (
                 <div>
-                    <p>Latitude: {coordinates.latitude}</p>
-                    <p>Longitude: {coordinates.longitude}</p>
                 </div>
             )}
         </div>

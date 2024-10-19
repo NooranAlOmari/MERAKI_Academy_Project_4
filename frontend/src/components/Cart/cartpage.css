@@ -121,7 +121,7 @@
 }
 
 .remove-button {
-    background: none;
+    background: none !important;
     border: none;
     color: #ff4c4c;
     font-size: 24px;

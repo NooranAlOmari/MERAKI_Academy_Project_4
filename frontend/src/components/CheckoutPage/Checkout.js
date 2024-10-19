@@ -6,6 +6,7 @@ import { FaMoneyBillAlt, FaCreditCard } from 'react-icons/fa';
 import './CheckoutPage.css'; 
 import MapComponent from '../MapComponent/MapComponent';
 import LocationComponent from '../MapComponent/LocationComponent';
+import CartSummary from '../Cart/CartSummary';
 
 const CheckoutPage = () => {
     const navigate = useNavigate();
@@ -34,8 +35,8 @@ const CheckoutPage = () => {
         }));
     };
 
-    console.log("hi this is the cart")
-    console.log(cart)
+    console.log("hi this is the cart");
+    console.log(cart);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -100,14 +101,28 @@ const CheckoutPage = () => {
         );
     }, []);
 
+    // Calculate cart summary (subtotal, VAT, total)
+    const calculateCartSummary = () => {
+        if (cart && cart.length > 0) {
+            const subtotal = cart.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
+            const vat = subtotal * 0.05;
+            const deliveryFree = 0.00; /* delivery free*/
+            const total = subtotal + vat + deliveryFree;
+            return { subtotal, vat, deliveryFree, total };
+        }
+        return { subtotal: 0, vat: 0, deliveryFree: 0, total: 0 };
+    };
+    
+    const { subtotal, vat, deliveryFree, total } = calculateCartSummary();
+
     return (
-        <div className="checkout-container cart-page slide-up-animation'">
+        <div className="checkout-container cart-page slide-up-animation">
             <div className="checkout-header">
                 <h1>Checkout</h1>
                 {error && <p className="error-message">{error}</p>}
             </div>
 
-            <form onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit}>
                 <div className="checkout-header">
                     <h2>Shipping Address</h2>
                 </div>
@@ -139,21 +154,22 @@ const CheckoutPage = () => {
                 <input 
                     type="text" 
                     className="input-field" 
-                    placeholder="State" 
-                    onChange={(e) => setShippingAddress({ ...shippingAddress, state: e.target.value })} 
+                    placeholder="Country" 
+                    onChange={(e) => setShippingAddress({ ...shippingAddress, country: e.target.value })} 
                     required 
                 />
 
                 <input 
                     type="text" 
                     className="input-field" 
-                    placeholder="Country" 
-                    onChange={(e) => setShippingAddress({ ...shippingAddress, country: e.target.value })} 
+                    placeholder="Phone Number" 
+                    onChange={(e) => setShippingAddress({ ...shippingAddress, state: e.target.value })} 
                     required 
                 />
 
                 {/* Show Location and Map */}
                 <LocationComponent onLocationChange={handleLocationChange} />
+                {/* Directly rendering the MapComponent here */}
                 <MapComponent coordinates={shippingAddress.coordinates} /> {/* Pass coordinates to map component */}
 
                 <div className="checkout-header">
@@ -192,6 +208,26 @@ const CheckoutPage = () => {
                     onChange={(e) => setNotes(e.target.value)} 
                 />
 
+                <div className="order-summary">
+                    <h3>Cart Summary</h3>
+                    <div className="summary-item">
+                        <span>Subtotal</span>
+                        <span>${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div className="summary-item">
+                        <span>Delivery Free</span>
+                        <span>{deliveryFree === 0 ? 'Free' : `$${deliveryFree.toFixed(2)}`}</span>
+                    </div>
+                    <div className="summary-item vat">
+                        <span>VAT (5%)</span>
+                        <span>${vat.toFixed(2)}</span>
+                    </div>
+                    <div className="summary-item total">
+                        <span>Total</span>
+                        <span>${total.toFixed(2)}</span>
+                    </div>
+                </div>
+                
                 <button type="submit" className="submit-button">Submit Order</button>
             </form>
         </div>

@@ -1,0 +1,36 @@
+.location-button {
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+    margin-top: 40px;
+}
+
+.location-button:hover {
+    background-color: #45a049; 
+}
+
+.error-message {
+    color: red; 
+}
+
+
+.map-container {
+    position: relative;
+}
+
+
+
+/*do not work*/
+.blurred-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7); /* خلفية مشوش */
+    backdrop-filter: blur(8px); 
+    z-index: 1; 
+}
