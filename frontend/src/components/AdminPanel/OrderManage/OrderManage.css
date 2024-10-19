@@ -1,12 +1,13 @@
 
-.order-manage {
+.order-management {
     font-family: 'Roboto', sans-serif;
     background-color: #f4f7f9; 
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05); 
-    margin-top: 1750px; 
-    max-width: 1170px;
-    top: 493px;
+    margin-top: 10px; 
+    max-width: 1670px !important;
+    top: 43px;
+    text-align: center;
 }
 
 table {

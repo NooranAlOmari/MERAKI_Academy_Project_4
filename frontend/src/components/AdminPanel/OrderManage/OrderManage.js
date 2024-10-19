@@ -61,7 +61,7 @@ function OrderManage() {
     };
 
     return (
-        <Box className="order-manage slide-up-animation" sx={{ padding: 2 }}>
+        <Box className="order-management slide-up-animation" sx={{ padding: 2 }}>
             <Typography variant="h4" gutterBottom className="manage-title">
                 Manage Orders
             </Typography>

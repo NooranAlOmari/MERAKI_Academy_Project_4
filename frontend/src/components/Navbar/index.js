@@ -24,7 +24,7 @@ console.log(cart)
       <div className="navbar-item" onClick={() => navigate('/our-chef')}>
         <i className="fas fa-user-tie"></i> Our Chefs
       </div>
-      <div className="navbar-item">
+      <div className="navbar-item" onClick={() => navigate('/my-orders')}>
         <i className="fas fa-box"></i> My Orders
       </div>
       <div className="navbar-item" onClick={() => navigate('/Favorites')}>
