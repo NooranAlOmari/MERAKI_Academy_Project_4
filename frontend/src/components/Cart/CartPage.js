@@ -35,54 +35,72 @@ const CartPage = () => {
     // Update quantity of a product in the cart
     const updateQuantity = async (productId, newQuantity) => {
         try {
-            const response = await axios.put('http://localhost:5000/carts/updateQuantity', {
-                product: productId,
-                quantity: newQuantity
-            }, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-
-            if (response.data && response.data.cart && Array.isArray(response.data.cart.items)) {
-                setupdateCart(response.data.cart.items);  // Update cart after quantity change
-            }
+          const response = await axios.put('http://localhost:5000/carts/updateQuantity', {
+            product: productId,
+            quantity: newQuantity
+          }, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+      
+          if (response.data && response.data.cart) {
+            const updatedCart = response.data.cart.items;
+            setupdateCart(updatedCart);
+            localStorage.setItem('cart', JSON.stringify(updatedCart)); // تحديث السلة في localStorage
+          }
         } catch (err) {
-            console.error('Error updating quantity:', err);
-            setError('Failed to update the cart.');
+          console.error('Error updating quantity:', err);
         }
-    };
+      };
+      
 
     // Remove product from the cart/**********/ /***************/
     const removeProduct = async (productId) => {
         try {
-            const response = await axios.delete('http://localhost:5000/carts', {
-                headers: { Authorization: `Bearer ${token}` },
-                data: { product: productId }
-            });
-
-            if (response.data && response.data.deleted) {
-                const filterCart = cart.filter((item) => item.product._id !== response.data.deleted);
-                setupdateCart(filterCart);  // Update cart after product removal
-            }
+          const response = await axios.delete('http://localhost:5000/carts', {
+            headers: { Authorization: `Bearer ${token}` },
+            data: { product: productId }
+          });
+      
+          if (response.data && response.data.deleted) {
+            const updatedCart = cart.filter((item) => item.product._id !== response.data.deleted);
+            setupdateCart(updatedCart);
+            localStorage.setItem('cart', JSON.stringify(updatedCart)); // تحديث السلة في localStorage
+          }
         } catch (err) {
-            console.error('Error removing product:', err);
-            setError('Failed to remove the product.');
+          console.error('Error removing product:', err);
         }
-    };
+      };
+      
+/**************************************** */
+//بتحقق انها array عشان اذا ما كان اله في لوكل ستوريج سلة فقيمتها انديفايند او نال فما رح تزبط عليها ريديوس و اذا كبس لعرض السلة قبل ما يضيف منتجات و قبل ما تصير باللوكل ستوريج رح يطلع ايرور 
 
     // Calculate cart summary (subtotal, VAT, total)
-    const calculateCartSummary = () => {
-        if (cart && cart.length > 0) {
-            const subtotal = cart.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
-            const vat = subtotal * 0.05;
-            const deliveryFree = 0.00; /* delivery free*/
-            const total = subtotal + vat + deliveryFree;
-            return { subtotal, vat, deliveryFree, total };
-        }
-        return { subtotal: 0, vat: 0, deliveryFree: 0, total: 0 };
+const calculateCartSummary = () => {
+    const vatRate = 0.05;  // نسبة الضريبة
+    const deliveryFee = 2.00;  // تكلفة التوصيل
+
+ // Check that cart is an array and contains elements
+ if (Array.isArray(cart) && cart.length > 0) {
+    const subtotal = cart.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
+    const vat = subtotal * vatRate;
+    const total = subtotal + vat + deliveryFee;
+
+    return { subtotal, vat, deliveryFee, total };
+}
+
+// في حال كانت السلة فارغة أو غير صالحة
+return { subtotal: 0, vat: 0, deliveryFee: deliveryFee, total: 0 };
+};
+
+const { subtotal, vat, deliveryFee, total } = calculateCartSummary();
+/**************************************************** */
+
+    const handleCheckout = () => {
+        navigate('/checkout');  // Go to Checkout page
+        window.location.reload(); // Reload the page /*عشان مشكلة الخريطة ما بتطلع الا بعد اعادة تحميل الصفحة */
+        
+        
     };
-
-    const { subtotal, vat, deliveryFree, total } = calculateCartSummary();
-
     return (
         <div className='all-the-page'>
         <div className="cart-page ">
@@ -120,8 +138,8 @@ const CartPage = () => {
                             <span>${subtotal.toFixed(2)}</span>
                         </div>
                         <div className="summary-item">
-                            <span>Delivery Free</span>
-                            <span>{deliveryFree === 0 ? 'Free' : `$${deliveryFree.toFixed(2)}`}</span>
+                            <span>Delivery Fee</span>
+                            <span>{deliveryFee === 0 ? 'Free' : `$${deliveryFee.toFixed(2)}`}</span>
                         </div>
                         <div className="summary-item vat">
                             <span>VAT (5%)</span>
@@ -133,7 +151,10 @@ const CartPage = () => {
                         </div>
                         <div className="buttons-container">
                             <button onClick={() => navigate(-1)} className="button-">Add More</button>
-                            <button onClick={() => navigate('/checkout')}>Proceed to Checkout</button>
+                            <div>
+            {/* Go to Checkout page and reload page button*/}
+            <button onClick={handleCheckout}>Proceed to Checkout</button>
+        </div>
                         </div>
                     </div>
                 </div>

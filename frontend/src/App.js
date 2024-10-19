@@ -30,7 +30,7 @@ const App = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [products, setProducts] = useState([])
   const [selectedproductId, setselectedproductId] = useState(null);
-  const [cart, setupdateCart] = useState([]);
+  const [cart, setupdateCart] = useState(localStorage.getItem('cart')||[]);//
   const [favorites, setFavorites] = useState([]);
   const [quantity, setQuantity] = useState(1);
 

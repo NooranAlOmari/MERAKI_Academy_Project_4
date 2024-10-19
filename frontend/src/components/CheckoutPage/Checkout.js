@@ -10,8 +10,8 @@ import CartSummary from '../Cart/CartSummary';
 
 const CheckoutPage = () => {
     const navigate = useNavigate();
-    const { token, cart } = useContext(AppContext);
-    
+    const { token, cart ,setupdateCart } = useContext(AppContext);
+
     // Default coordinates (e.g., city center or a default location)
     const defaultCoordinates = { latitude: 25.276987, longitude: 55.296249 }; // Example for Dubai
 
@@ -35,13 +35,30 @@ const CheckoutPage = () => {
         }));
     };
 
+/***************************/
+    useEffect(() => {
+        // Retrieve the basket from localStorage when loading the component تسترجع سلة
+        const storedCart = JSON.parse(localStorage.getItem('cart'));
+        if (Array.isArray(storedCart)) {
+            setupdateCart(storedCart);
+        }
+    }, []);
+
+    useEffect(() => {
+        // تحديث localStorage عند تغيير السلة
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
+//بقدر ادمجهم
+/***************************/
+
+
     console.log("hi this is the cart");
     console.log(cart);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
     
-        if (cart.length === 0) {
+        if (!Array.isArray(cart) || cart.length === 0) {
             console.error('Cart is empty. Cannot create order.');
             setError('Sorry, your cart is empty');
             return;
@@ -103,7 +120,7 @@ const CheckoutPage = () => {
 
     // Calculate cart summary (subtotal, VAT, total)
     const calculateCartSummary = () => {
-        if (cart && cart.length > 0) {
+        if (Array.isArray(cart) && cart.length > 0) {
             const subtotal = cart.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
             const vat = subtotal * 0.05;
             const deliveryFree = 0.00; /* delivery free*/
@@ -116,13 +133,13 @@ const CheckoutPage = () => {
     const { subtotal, vat, deliveryFree, total } = calculateCartSummary();
 
     return (
-        <div className="checkout-container cart-page slide-up-animation">
+        <div className="checkout-container cart-page ">
             <div className="checkout-header">
                 <h1>Checkout</h1>
                 {error && <p className="error-message">{error}</p>}
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='slide-up-animation'>
                 <div className="checkout-header">
                     <h2>Shipping Address</h2>
                 </div>

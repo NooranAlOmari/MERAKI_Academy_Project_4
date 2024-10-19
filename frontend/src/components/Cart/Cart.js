@@ -3,23 +3,16 @@ import { AppContext } from '../../App';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { jwtDecode } from 'jwt-decode';
-
 
 const Cart = ({ productId, productName, productPrice, quantity, setQuantity }) => {
     const navigate = useNavigate();
     const { token, setupdateCart } = useContext(AppContext);
 
-//Check if the token has expired بقدر اعملها ميدلوير باك اند
-    const isTokenValid = (token) => {
-            const decoded = jwtDecode(token);
-            return decoded.exp * 1000 > Date.now(); 
-    };
-
     const handleAddToCart = () => {
+        const storedToken = localStorage.getItem('token') || token;
         
-        console.log(token);
-        if (!isTokenValid(token) || !token || token === "undefined" || token === null) {
+        console.log(storedToken);
+        if (!storedToken || storedToken === "undefined" || storedToken === null) {
             alert('You need to be logged in to add items to the cart.');
             navigate('/AuthPage');
             return;

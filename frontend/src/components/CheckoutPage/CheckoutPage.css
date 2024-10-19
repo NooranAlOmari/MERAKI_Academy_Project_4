@@ -116,7 +116,7 @@
 }
 
 .submit-button:hover {
-    background-color: #da1b60;
+    background-color: #ff4b2b;
 }
 
 
@@ -167,6 +167,30 @@
 
 /*********************************************/
 /*map*/
+.location-button {
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+    margin-top: 40px;
+}
+
+.location-button:hover {
+    background-color: #45a049 !important; 
+}
+
+.error-message {
+    color: red; 
+}
+
+
+.map-container {
+    position: relative;
+}
+
+
 
 
 /********************************************/
