@@ -119,8 +119,8 @@ return (
                         <div className="details">
                             <h3>{product.name}</h3>
                             <p className="calori">
-                                <FaDollarSign style={{ color: 'green', marginRight: '0px' }} />
-                                Price: ${product.price}
+                                
+                                Price: {product.price}JD
                             </p>
                             <div className="time-rating">
                                 <p className="timee">

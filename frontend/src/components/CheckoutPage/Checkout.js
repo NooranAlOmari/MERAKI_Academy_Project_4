@@ -45,7 +45,7 @@ const CheckoutPage = () => {
     }, []);
 
     useEffect(() => {
-        // تحديث localStorage عند تغيير السلة
+        // Update localStorage when the basket is changed
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
 //بقدر ادمجهم
@@ -232,7 +232,7 @@ const CheckoutPage = () => {
                         <span>${subtotal.toFixed(2)}</span>
                     </div>
                     <div className="summary-item">
-                        <span>Delivery Free</span>
+                        <span>Delivery Fee</span>
                         <span>{deliveryFree === 0 ? 'Free' : `$${deliveryFree.toFixed(2)}`}</span>
                     </div>
                     <div className="summary-item vat">
