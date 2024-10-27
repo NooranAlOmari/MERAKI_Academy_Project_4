@@ -1,11 +1,12 @@
+/*************************/
 const express = require('express');
 const router = express.Router();
-const axios = require('axios'); // مكتبة لإجراء الطلبات HTTP
+const axios = require('axios'); 
 
-// نقطة نهاية API
+
 router.get('/data', async (req, res) => {
     try {
-        const response = await axios.get('https://external-api-url.com/endpoint'); // استبدل بعنوان API الخارجي
+        const response = await axios.get('https://external-api-url.com/endpoint'); // 
         res.json(response.data);
     } catch (error) {
         console.error(error);
